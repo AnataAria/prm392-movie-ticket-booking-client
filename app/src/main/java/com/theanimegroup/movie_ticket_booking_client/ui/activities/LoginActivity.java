@@ -1,5 +1,7 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
+import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,8 @@ import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.api.AuthenticationService;
 import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.request.AuthenticationRequest;
+import com.theanimegroup.movie_ticket_booking_client.models.response.AuthenticationResponse;
+import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,18 +51,23 @@ public class LoginActivity extends AppCompatActivity {
                 .password(password)
                 .build();
 
-        authenticationService.login(loginRequest).enqueue(new Callback<Void>() {
+        authenticationService.login(loginRequest).enqueue(new Callback<ResponseObject<AuthenticationResponse>>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<ResponseObject<AuthenticationResponse>> call, Response<ResponseObject<AuthenticationResponse>> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+                    assert response.body() != null;
+                    String token = response.body().getData().getToken();
+                    SharedPreferences sharedPreferences = getSharedPreferences("MovieAppPrefsToken", MODE_PRIVATE);
+                    @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("auth_token", token);
                 } else {
                     Toast.makeText(LoginActivity.this, "Login failed: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<ResponseObject<AuthenticationResponse>> call, Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
 
