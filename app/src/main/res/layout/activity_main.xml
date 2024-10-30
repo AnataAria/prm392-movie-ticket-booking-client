@@ -16,8 +16,8 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:background="?attr/colorPrimary"
+            android:layout_height="80dp"
+            android:background="@drawable/galaxy_gradient"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <!-- Hamburger Menu Button -->
@@ -33,21 +33,41 @@
             <!-- Sign in/Register or Profile Icon -->
             <LinearLayout
                 android:id="@+id/auth_buttons"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="20dp"
+                android:gravity="end"
                 android:orientation="horizontal">
 
-                <Button
+                <TextView
                     android:id="@+id/sign_in_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign in" />
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/space_button_background"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="10dp"
+                    android:text="Sign in"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
 
-                <Button
+                <TextView
                     android:id="@+id/register_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Register" />
+                    android:background="@drawable/space_button_background"
+                    android:fontFamily="monospace"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="15dp"
+                    android:paddingBottom="10dp"
+                    android:text="Register"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -67,17 +87,18 @@
                     android:id="@+id/featured_movie_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:fontFamily="sans-serif-black"
                     android:padding="16dp"
                     android:text="Month’s movie"
-                    android:textSize="18sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <!-- Movie List Section -->
                 <ListView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                </ListView>
+                    android:orientation="vertical"></ListView>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
