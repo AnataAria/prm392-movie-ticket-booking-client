@@ -11,6 +11,7 @@ import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
 import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
+import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 import com.theanimegroup.movie_ticket_booking_client.ui.adapters.MovieAdapter;
 
 import java.util.ArrayList;
@@ -44,13 +45,13 @@ public class MovieActivity extends AppCompatActivity {
     }
 
     private void loadMovies() {
-        Call<Movie[]> call = movieService.getAllMovies();
-        call.enqueue(new Callback<Movie[]>() {
+        Call<ResponseObject<List<Movie>>> call = movieService.getAllMovies();
+        call.enqueue(new Callback<ResponseObject<List<Movie>>>() {
             @Override
-            public void onResponse(Call<Movie[]> call, Response<Movie[]> response) {
+            public void onResponse(Call<ResponseObject<List<Movie>>> call, Response<ResponseObject<List<Movie>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     movieList.clear();
-                    movieList.addAll(List.of(response.body()));
+                    movieList.addAll(response.body().getData());
                     adapter = new MovieAdapter(MovieActivity.this, new ArrayList<>(movieList));
                     listView.setAdapter(adapter);
                     Log.i("MovieActivity", "Movies loaded successfully");
@@ -60,7 +61,7 @@ public class MovieActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<Movie[]> call, Throwable t) {
+            public void onFailure(Call<ResponseObject<List<Movie>>> call, Throwable t) {
                 Log.e("MovieActivity", "API call failed", t);
                 Toast.makeText(MovieActivity.this, "Load Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
             }
