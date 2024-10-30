@@ -30,7 +30,11 @@
 
         <!-- Register Activity -->
         <activity android:name=".ui.activities.RegisterActivity"
-            android:exported="true"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+        <activity android:name=".ui.activities.HomeActivity"
+            android:exported="false"
             tools:ignore="Instantiatable">
         </activity>
 

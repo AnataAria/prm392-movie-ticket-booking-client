@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
+import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
 import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
@@ -40,7 +41,7 @@ public class MovieActivity extends AppCompatActivity {
             Log.e("MovieActivity", "listView is null, check your layout ID");
         }
 
-        movieService = RetrofitClient.getInstance().create(MovieService.class);
+        movieService = APIUnit.getInstance().getMovieService();
         loadMovies();
     }
 

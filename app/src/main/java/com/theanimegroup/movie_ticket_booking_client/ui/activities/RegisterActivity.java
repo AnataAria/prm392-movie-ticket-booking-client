@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
+import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.AuthenticationService;
 import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.request.RegisterRequest;
@@ -40,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerField();
     }
     private void registerField () {
-        authenticationService = RetrofitClient.getInstance().create(AuthenticationService.class);
+        authenticationService = APIUnit.getInstance().getAuthenticationService();
         fullNameTxt = findViewById(R.id.fullName_input);
         emailTxt = findViewById(R.id.email_input);
         passwordTxt = findViewById(R.id.password_input);
@@ -91,6 +92,9 @@ public class RegisterActivity extends AppCompatActivity {
             public void onResponse(Call<ResponseObject<Object>> call, Response<ResponseObject<Object>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(RegisterActivity.this, "Register Success", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             }
             @Override
