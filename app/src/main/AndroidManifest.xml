@@ -13,24 +13,19 @@
         android:theme="@style/Theme.Movie_ticket_booking_client"
         tools:targetApi="31">
 
-        <!-- Main Activity -->
-<!--        <activity-->
-<!--            android:name=".ui.activities.MainActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-
-        <!-- Login Activity -->
-        <activity android:name=".ui.activities.LoginActivity"
-            android:exported="true"
-            tools:ignore="Instantiatable">
+        <activity
+            android:name=".ui.activities.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <!-- Login Activity -->
+        <activity android:name=".ui.activities.LoginActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable">
         </activity>
 
         <!-- Register Activity -->

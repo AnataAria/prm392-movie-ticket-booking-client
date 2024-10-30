@@ -1,11 +1,13 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +26,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText emailInput, passwordInput;
+    private TextView registerLinkTxt;
     private Button loginButton;
     private AuthenticationService authenticationService;
     @Override
@@ -34,8 +37,14 @@ public class LoginActivity extends AppCompatActivity {
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
         loginButton = findViewById(R.id.login_button);
+        registerLinkTxt = findViewById(R.id.register_link);
         authenticationService = RetrofitClient.getInstance().create(AuthenticationService.class);
         loginButton.setOnClickListener(v -> loginUser());
+        registerLinkTxt.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+            startActivity(intent);
+            finish();
+        });
     }
     private void loginUser() {
         String email = emailInput.getText().toString().trim();
