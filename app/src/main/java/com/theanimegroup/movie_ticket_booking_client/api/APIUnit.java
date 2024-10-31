@@ -40,13 +40,13 @@ public class APIUnit {
             @Override
             public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
                 if (!response.isSuccessful()) {
-                    System.exit(0);
+//                    System.exit(0);
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<String> call,@NonNull Throwable t) {
-                System.exit(0);
+//                System.exit(0);
             }
         });
     }
