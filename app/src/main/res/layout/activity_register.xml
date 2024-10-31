@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:layout_gravity="center">
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Register"
-            android:paddingBottom="100dp"
-            android:textSize="24sp"
+            android:paddingBottom="60dp"
+            android:textSize="50sp"
             android:textStyle="bold"
+            android:textColor="@color/metallic_silver"
+            android:fontFamily="monospace"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp"
+            android:shadowColor="#E4E4E4"
+            android:shadowRadius="5"
+            android:shadowDx="3"
+            android:shadowDy="5" />
 
-        <!-- Full Name -->
+
+        <!-- Tên người dùng -->
         <EditText
-            android:id="@+id/fullName_input"
+            android:id="@+id/username_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Full Name"
+            android:hint="Username"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColorHint="#78FFFFFF"
             android:inputType="text" />
 
         <!-- Email -->
@@ -33,33 +44,76 @@
             android:id="@+id/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:hint="Email"
+            android:textColorHint="#78FFFFFF"
             android:inputType="textEmailAddress"
             android:layout_marginTop="16dp" />
 
-        <!-- Password -->
+        <!-- Số điện thoại -->
+        <EditText
+            android:id="@+id/phone_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColorHint="#78FFFFFF"
+            android:hint="Phone"
+            android:inputType="phone"
+            android:layout_marginTop="16dp" />
+
+        <!-- Địa chỉ -->
+        <EditText
+            android:id="@+id/address_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColorHint="#78FFFFFF"
+            android:hint="Address"
+            android:inputType="textPostalAddress"
+            android:layout_marginTop="16dp" />
+
+        <!-- Mật khẩu -->
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColorHint="#78FFFFFF"
             android:hint="Password"
             android:inputType="textPassword"
             android:layout_marginTop="16dp" />
 
-        <!-- Confirm Password -->
+        <!-- Xác nhận mật khẩu -->
         <EditText
             android:id="@+id/confirm_password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:textColorHint="#78FFFFFF"
             android:hint="Confirm Password"
             android:inputType="textPassword"
             android:layout_marginTop="16dp" />
-
-        <Button
+        <!-- Nút Đăng Ký -->
+        <TextView
             android:id="@+id/register_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Register"
+            android:padding="10dp"
+            android:layout_marginLeft="100dp"
+            android:layout_marginRight="100dp"
+            android:text="Confirm"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="monospace"
+            android:textColor="@color/metallic_silver"
+            android:background="@drawable/space_button_background"
+            android:clickable="true"
             android:layout_marginTop="50dp" />
 
         <TextView
@@ -70,6 +124,7 @@
             android:textColor="@android:color/holo_blue_light"
             android:layout_marginTop="16dp"
             android:layout_gravity="center_horizontal" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Viền phát sáng -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="30dp" />
+            <solid android:color="#1A1A1A" />
+            <stroke android:width="5dp" android:color="#BFFFFFFF" /> <!-- Màu viền phát sáng -->
+        </shape>
+    </item>
+    <!-- Nền gradient -->
+    <item android:left="2dp" android:top="2dp" android:right="2dp" android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#51299E"
+                android:endColor="#6B1278"
+                android:angle="135" />
+            <corners android:radius="30dp" />
+        </shape>
+    </item>
+</layer-list>
