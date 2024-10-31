@@ -13,7 +13,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="118dp"
+            android:layout_height="80dp"
             android:background="@drawable/galaxy_gradient"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
