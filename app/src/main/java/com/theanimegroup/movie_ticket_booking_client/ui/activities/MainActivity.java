@@ -2,6 +2,7 @@ package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 
 public class MainActivity extends AppCompatActivity {
+    private Button registerBtn, loginBtn, menuBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
         //Preload Retrofit when startup
-        APIUnit.getInstance();
+        APIUnit.getInstance().reloadConnection();
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
