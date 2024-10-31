@@ -5,7 +5,6 @@
     android:background="@drawable/space_background"
     android:layout_gravity="center">
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -30,14 +29,14 @@
 
         <!-- Tên người dùng -->
         <EditText
-            android:id="@+id/username_input"
+            android:id="@+id/fullname_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:textColorHint="#78FFFFFF"
-            android:inputType="text" />
+            android:hint="Full Name"
+            android:inputType="text"
+            android:textColorHint="#78FFFFFF" />
 
         <!-- Email -->
         <EditText
@@ -50,31 +49,6 @@
             android:textColorHint="#78FFFFFF"
             android:inputType="textEmailAddress"
             android:layout_marginTop="16dp" />
-
-        <!-- Số điện thoại -->
-        <EditText
-            android:id="@+id/phone_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColorHint="#78FFFFFF"
-            android:hint="Phone"
-            android:inputType="phone"
-            android:layout_marginTop="16dp" />
-
-        <!-- Địa chỉ -->
-        <EditText
-            android:id="@+id/address_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColorHint="#78FFFFFF"
-            android:hint="Address"
-            android:inputType="textPostalAddress"
-            android:layout_marginTop="16dp" />
-
         <!-- Mật khẩu -->
         <EditText
             android:id="@+id/password_input"
