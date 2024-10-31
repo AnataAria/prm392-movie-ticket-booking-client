@@ -57,15 +57,15 @@ public class MovieAdapter extends BaseAdapter {
 
 
         Movie movie = movies.get(position);
-        id.setText(movie.getId());
+        id.setText(String.valueOf(movie.getId()));
         name.setText(movie.getName());
         description.setText(movie.getDescription());
         image.setImageURI(Uri.parse(movie.getImage()));
         de.setText(movie.getDateStart().toString());
         ds.setText(movie.getDateEnd().toString());
-        s.setText(movie.getStatus());
+        s.setText(movie.getStatus() == 1 ? "Valid" : "Not Valid");
         dn.setText(movie.getDirectorName());
-        ls.setText(movie.getShowtime().size());
+        ls.setText(String.valueOf(movie.getShowtime().size()));
 
         return convertView;
     }

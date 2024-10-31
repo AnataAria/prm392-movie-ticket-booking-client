@@ -2,14 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- Tiêu đề -->
+        <!-- Title -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,12 +20,12 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp" />
 
-        <!-- Tên người dùng -->
+        <!-- Full Name -->
         <EditText
-            android:id="@+id/username_input"
+            android:id="@+id/fullName_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="Full Name"
             android:inputType="text" />
 
         <!-- Email -->
@@ -37,25 +37,7 @@
             android:inputType="textEmailAddress"
             android:layout_marginTop="16dp" />
 
-        <!-- Số điện thoại -->
-        <EditText
-            android:id="@+id/phone_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone"
-            android:inputType="phone"
-            android:layout_marginTop="16dp" />
-
-        <!-- Địa chỉ -->
-        <EditText
-            android:id="@+id/address_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Address"
-            android:inputType="textPostalAddress"
-            android:layout_marginTop="16dp" />
-
-        <!-- Mật khẩu -->
+        <!-- Password -->
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
@@ -64,7 +46,7 @@
             android:inputType="textPassword"
             android:layout_marginTop="16dp" />
 
-        <!-- Xác nhận mật khẩu -->
+        <!-- Confirm Password -->
         <EditText
             android:id="@+id/confirm_password_input"
             android:layout_width="match_parent"
@@ -73,7 +55,6 @@
             android:inputType="textPassword"
             android:layout_marginTop="16dp" />
 
-        <!-- Nút Đăng Ký -->
         <Button
             android:id="@+id/register_button"
             android:layout_width="match_parent"
