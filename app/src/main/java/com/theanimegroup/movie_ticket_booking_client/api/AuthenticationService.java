@@ -7,6 +7,8 @@ import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObj
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 
 public interface AuthenticationService {
@@ -14,4 +16,6 @@ public interface AuthenticationService {
     Call<ResponseObject<AuthenticationResponse>> login (@Body AuthenticationRequest loginRequest);
     @POST("/api/auth/register")
     Call<ResponseObject<Object>> register (@Body RegisterRequest registerRequest);
+    @GET("/api/auth/who-am-i")
+    Call<ResponseObject<Object>> me(@Header("Authorization") String header);
 }
