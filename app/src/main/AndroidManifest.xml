@@ -24,7 +24,7 @@
 <!--        </activity>-->
 
         <!-- Login Activity -->
-        <activity android:name=".ui.activities.LoginActivity"
+        <activity android:name=".ui.activities.MovieActivity"
             android:exported="true"
             tools:ignore="Instantiatable">
             <intent-filter>
@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Register Activity -->
+<!--         Register Activity-->
         <activity android:name=".ui.activities.RegisterActivity"
             android:exported="true"
             tools:ignore="Instantiatable">
