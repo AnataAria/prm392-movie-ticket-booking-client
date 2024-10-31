@@ -2,8 +2,6 @@ package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.AuthenticationService;
-import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.request.RegisterRequest;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 
@@ -28,8 +25,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText emailTxt;
     private EditText passwordTxt;
     private EditText repassTxt;
-    private Button registerBtn;
-    private TextView loginLinkTxt;
     private AuthenticationService authenticationService;
 
     @Override
@@ -42,12 +37,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private void registerField () {
         authenticationService = APIUnit.getInstance().getAuthenticationService();
-        fullNameTxt = findViewById(R.id.fullName_input);
+        fullNameTxt = findViewById(R.id.fullname_input);
         emailTxt = findViewById(R.id.email_input);
         passwordTxt = findViewById(R.id.password_input);
         repassTxt = findViewById(R.id.confirm_password_input);
-        registerBtn = findViewById(R.id.register_button);
-        loginLinkTxt = findViewById(R.id.login_link);
+        TextView registerBtn = findViewById(R.id.register_button);
+        TextView loginLinkTxt = findViewById(R.id.login_link);
         registerBtn.setOnClickListener(v -> handleRegisterCall());
         loginLinkTxt.setOnClickListener(v -> {
             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

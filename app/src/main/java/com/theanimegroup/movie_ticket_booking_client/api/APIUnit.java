@@ -1,5 +1,7 @@
 package com.theanimegroup.movie_ticket_booking_client.api;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import retrofit2.Call;
@@ -15,7 +17,6 @@ public class APIUnit {
         if (instance == null) {
             instance = new APIUnit();
             instance.init();
-            instance.reloadConnection();
         }
         return instance;
     }
@@ -36,17 +37,17 @@ public class APIUnit {
     }
 
     public void reloadConnection () {
-        getPingService().ping().enqueue(new Callback<String>() {
+        getPingService().ping().enqueue(new Callback<Object>() {
             @Override
-            public void onResponse(@NonNull Call<String> call, @NonNull Response<String> response) {
+            public void onResponse(@NonNull Call<Object> call, @NonNull Response<Object> response) {
                 if (!response.isSuccessful()) {
-//                    System.exit(0);
+                    System.exit(0);
                 }
             }
-
             @Override
-            public void onFailure(@NonNull Call<String> call,@NonNull Throwable t) {
-//                System.exit(0);
+            public void onFailure(@NonNull Call<Object> call,@NonNull Throwable t) {
+                Log.d("Init Connection Failed",t.getMessage(), t);
+                System.exit(0);
             }
         });
     }

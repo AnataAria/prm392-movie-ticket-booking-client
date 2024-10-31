@@ -4,8 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         emailInput = findViewById(R.id.email_input);
         passwordInput = findViewById(R.id.password_input);
-        Button loginButton = findViewById(R.id.login_button);
+        TextView loginButton = findViewById(R.id.login_button);
         TextView registerLinkTxt = findViewById(R.id.register_link);
         authenticationService = APIUnit.getInstance().getAuthenticationService();
         loginButton.setOnClickListener(v -> loginUser());

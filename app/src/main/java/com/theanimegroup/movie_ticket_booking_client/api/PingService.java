@@ -5,5 +5,5 @@ import retrofit2.http.GET;
 
 public interface PingService {
     @GET("/api/Ping/CheckServer")
-    Call<String> ping();
+    Call<Object> ping();
 }
