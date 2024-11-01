@@ -57,33 +57,29 @@ public class ProfileActivity extends AppCompatActivity {
             startActivity(intent);
         }
         String accessToken = String.format("Bearer %s", token);
-        if (token != null) {
-            authenticationService.me(accessToken).enqueue(new Callback<ResponseObject<AccountResponseBasic>>() {
-                @Override
-                public void onResponse(Call<ResponseObject<AccountResponseBasic>> call, Response<ResponseObject<AccountResponseBasic>> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        AccountResponseBasic acc = response.body().getData();
-                        emailTxt.setText(String.format("Email: %s", acc.getEmail()));
-                        addressTxt.setText(String.format("Address: %s", acc.getAddress()));
-                        phoneTxt.setText(String.format("Phone: %s", acc.getPhone()));
-                        roleTxt.setText(String.format("Role: %s", "User"));
-                        statusTxt.setText(String.format("Status: %s", acc.getStatus() != 1 ? "ACTIVE" : "DISABLE"));
-                        balanceTxt.setText(String.format("Balance: %s", acc.getWallet()));
-                    } else {
-                        TokenUtils.removeAuthToken(ProfileActivity.this);
-                        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    }
+        authenticationService.me(accessToken).enqueue(new Callback<ResponseObject<AccountResponseBasic>>() {
+            @Override
+            public void onResponse(Call<ResponseObject<AccountResponseBasic>> call, Response<ResponseObject<AccountResponseBasic>> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    AccountResponseBasic acc = response.body().getData();
+                    emailTxt.setText(String.format("Email: %s", acc.getEmail()));
+                    addressTxt.setText(String.format("Address: %s", acc.getAddress() != null ? acc.getAddress() : "Not defined"));
+                    phoneTxt.setText(String.format("Phone: %s", acc.getPhone() != null ? acc.getAddress() : "Not defined"));
+                    roleTxt.setText(String.format("Role: %s", "User"));
+                    statusTxt.setText(String.format("Status: %s", acc.getStatus() != 1 ? "ACTIVE" : "DISABLE"));
+                    balanceTxt.setText(String.format("Balance: %s", acc.getWallet()));
+                } else {
+                    TokenUtils.removeAuthToken(ProfileActivity.this);
+                    Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                 }
+            }
 
-                @Override
-                public void onFailure(Call<ResponseObject<AccountResponseBasic>> call, Throwable t) {
-                    Toast.makeText(ProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Toast.makeText(this, "User is not authenticated", Toast.LENGTH_SHORT).show();
-        }
+            @Override
+            public void onFailure(Call<ResponseObject<AccountResponseBasic>> call, Throwable t) {
+                Toast.makeText(ProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
