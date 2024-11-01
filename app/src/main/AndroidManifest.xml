@@ -27,22 +27,26 @@
         <activity
             android:name=".ui.activities.LoginActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable"/>
 
         <!-- Register Activity -->
         <activity
             android:name=".ui.activities.RegisterActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.activities.HomeActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable"/>
 
         <activity
             android:name=".ui.activities.ProfileActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"></activity>
+            tools:ignore="Instantiatable"/>
+        <activity
+            android:name=".ui.activities.MovieDetailActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable"/>
 
     </application>
 

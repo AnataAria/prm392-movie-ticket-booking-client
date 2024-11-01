@@ -75,7 +75,6 @@ public class HomeActivity extends AppCompatActivity {
                 if (id == R.id.view_profile) {
                     Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                     startActivity(intent);
-                    finish();
                     return true;
                 } else if (id == R.id.edit_profile) {
                     Toast.makeText(getApplicationContext(), "Action Two selected", Toast.LENGTH_SHORT).show();

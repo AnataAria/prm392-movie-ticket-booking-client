@@ -54,12 +54,10 @@ public class MainActivity extends AppCompatActivity {
         this.registerBtn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
             startActivity(intent);
-            finish();
         });
         this.loginBtn.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(intent);
-            finish();
         });
         this.menuBtn.setOnClickListener(v -> {
             PopupMenu popupMenu = new PopupMenu(this, v);
