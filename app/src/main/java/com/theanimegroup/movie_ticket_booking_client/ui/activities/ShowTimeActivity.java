@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
-import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
+import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.ShowTimeService;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.ShowTime;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
@@ -24,10 +24,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ShowTimeActivity extends AppCompatActivity {
+    public ShowTimeService showTimeService;
     private ShowTimeAdapter adapter;
     private ListView listView;
-    public ShowTimeService showTimeService;
     private List<ShowTime> showTimeList = new ArrayList<>();
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class ShowTimeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_entity);
 
         listView = findViewById(R.id.listView);
-        showTimeService = RetrofitClient.getInstance().create(ShowTimeService.class);
+        showTimeService = APIUnit.getInstance().getShowTimeService();
 
         loadMovieShowTime();
         listView.setOnItemClickListener((parent, view, position, id) -> {

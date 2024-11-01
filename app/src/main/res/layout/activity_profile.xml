@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@color/backgroundColor">
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:paddingBottom="8dp"
         android:textColor="@color/colorPrimary"
-        android:paddingBottom="8dp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -34,48 +33,48 @@
                 android:id="@+id/emailTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/textColorSecondary"
-                android:text="Email: example@example.com"/>
+                android:text="Email: example@example.com"
+                android:textColor="@color/textColorSecondary" />
 
             <TextView
                 android:id="@+id/addressTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/textColorSecondary"
-                android:text="Address: 123 Main St"/>
+                android:text="Address: 123 Main St"
+                android:textColor="@color/textColorSecondary" />
 
             <TextView
                 android:id="@+id/phoneTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/textColorSecondary"
-                android:text="Phone: (123) 456-7890"/>
+                android:text="Phone: (123) 456-7890"
+                android:textColor="@color/textColorSecondary" />
 
             <TextView
                 android:id="@+id/roleTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/textColorSecondary"
-                android:text="Role: User"/>
+                android:text="Role: User"
+                android:textColor="@color/textColorSecondary" />
 
             <TextView
                 android:id="@+id/statusTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/statusColor"
-                android:text="Status: Active"/>
+                android:text="Status: Active"
+                android:textColor="@color/statusColor" />
 
             <TextView
                 android:id="@+id/walletTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@color/textColorSecondary"
-                android:text="Wallet Balance: $100.00"/>
+                android:text="Wallet Balance: $100.00"
+                android:textColor="@color/textColorSecondary" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
@@ -83,11 +82,11 @@
         android:id="@+id/editProfileButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Profile"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/colorPrimary"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:drawableStart="@drawable/ic_community"
         android:drawablePadding="8dp"
-        android:drawableStart="@drawable/ic_community" />
+        android:text="Edit Profile"
+        android:textColor="@android:color/white" />
 </LinearLayout>

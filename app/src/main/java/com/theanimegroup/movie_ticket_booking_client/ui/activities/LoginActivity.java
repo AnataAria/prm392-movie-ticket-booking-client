@@ -26,6 +26,7 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
     private EditText emailInput, passwordInput;
     private AuthenticationService authenticationService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         });
     }
+
     private void loginUser() {
         String email = emailInput.getText().toString().trim();
         String password = passwordInput.getText().toString().trim();
@@ -75,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login failed: " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
+
             @Override
             public void onFailure(@NonNull Call<ResponseObject<AuthenticationResponse>> call, @NonNull Throwable t) {
                 Toast.makeText(LoginActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();

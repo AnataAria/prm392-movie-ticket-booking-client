@@ -7,19 +7,19 @@
         android:id="@+id/seat_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seatid"/>
+        android:text="seatid" />
 
     <TextView
         android:id="@+id/seat_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seatid"/>
+        android:text="seatid" />
 
 
     <TextView
         android:id="@+id/cinema_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="seatid"/>
+        android:text="seatid" />
 
 </LinearLayout>

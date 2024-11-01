@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Seat;
-import com.theanimegroup.movie_ticket_booking_client.models.entity.ShowTime;
 
 import java.util.ArrayList;
 
@@ -27,14 +26,17 @@ public class SeatAdapter extends BaseAdapter {
     public int getCount() {
         return seats.size();
     }
+
     @Override
     public Object getItem(int position) {
         return seats.get(position);
     }
+
     @Override
     public long getItemId(int position) {
         return position;
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {

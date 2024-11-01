@@ -14,9 +14,11 @@ import retrofit2.http.POST;
 
 public interface AuthenticationService {
     @POST("/api/auth/login")
-    Call<ResponseObject<AuthenticationResponse>> login (@Body AuthenticationRequest loginRequest);
+    Call<ResponseObject<AuthenticationResponse>> login(@Body AuthenticationRequest loginRequest);
+
     @POST("/api/auth/register")
-    Call<ResponseObject<Object>> register (@Body RegisterRequest registerRequest);
+    Call<ResponseObject<Object>> register(@Body RegisterRequest registerRequest);
+
     @GET("/api/auth/who-am-i")
     Call<ResponseObject<AccountResponseBasic>> me(@Header("Authorization") String header);
 }

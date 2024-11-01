@@ -1,15 +1,15 @@
 package com.theanimegroup.movie_ticket_booking_client.models.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-
 public class ShowTime {
     public int id;
     public String showDateTime;
     public String roomName;
+
+    public ShowTime(int id, String showDateTime, String roomName) {
+        this.id = id;
+        this.showDateTime = showDateTime;
+        this.roomName = roomName;
+    }
 
     public int getId() {
         return id;
@@ -32,12 +32,6 @@ public class ShowTime {
     }
 
     public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public ShowTime(int id, String showDateTime, String roomName) {
-        this.id = id;
-        this.showDateTime = showDateTime;
         this.roomName = roomName;
     }
 }

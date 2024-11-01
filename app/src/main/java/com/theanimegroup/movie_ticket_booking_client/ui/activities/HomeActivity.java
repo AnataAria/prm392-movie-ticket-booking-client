@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private MovieAdapter movieAdapter;
     private MovieService movieService;
     private List<Movie> movieList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
         loadMovies();
     }
 
-    private void initComponent () {
+    private void initComponent() {
         this.menuBtn = findViewById(R.id.menu_button);
         this.profileBtn = findViewById(R.id.profile_button);
         this.listView = findViewById(R.id.movie_auth_list_home);

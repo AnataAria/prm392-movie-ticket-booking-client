@@ -8,24 +8,19 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
+import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
-import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
-import com.theanimegroup.movie_ticket_booking_client.api.ShowTimeService;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
-import com.theanimegroup.movie_ticket_booking_client.models.entity.ShowTime;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,7 +42,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.active_movie_detail); // Ensure you create this layout
+        setContentView(R.layout.active_movie_detail);
 
         // Initialize views
         titleTextView = findViewById(R.id.info_movie_title);
@@ -61,7 +56,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         btnBook = findViewById(R.id.info_movie_button);
 
-        movieService = RetrofitClient.getInstance().create(MovieService.class);
+        movieService = APIUnit.getInstance().getMovieService();
         loadMovieDetails();
         btnBook.setOnClickListener(v -> {
             int movieId = getIntent().getIntExtra("movieId", -1);
@@ -88,19 +83,19 @@ public class MovieDetailActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null) {
                     ResponseObject<Movie> responseObject = response.body();
-                        Movie movie = responseObject.getData();
-                        titleTextView.setText(movie.getName());
-                        directorTextView.setText(movie.getDirectorName());
-                        statusTextView.setText(String.valueOf(movie.getStatus()));
-                        dateStartTextView.setText(movie.getDateStart().toString());
-                        dateEndTextView.setText(movie.getDateEnd().toString());
-                        descriptionTextView.setText(movie.getDescription());
-                        showtimeTextView.setText(movie.getShowtime().toString());
-                        new LoadImageTask(movieImageView).execute(movie.getImage());
-                        Log.d("MovieDetailActivity", "Movie details loaded successfully");
-                    } else {
-                        Log.e("MovieDetailActivity", "Movie data is null or status is false");
-                    }
+                    Movie movie = responseObject.getData();
+                    titleTextView.setText(movie.getName());
+                    directorTextView.setText(movie.getDirectorName());
+                    statusTextView.setText(String.valueOf(movie.getStatus()));
+                    dateStartTextView.setText(movie.getDateStart().toString());
+                    dateEndTextView.setText(movie.getDateEnd().toString());
+                    descriptionTextView.setText(movie.getDescription());
+                    showtimeTextView.setText(movie.getShowtime().toString());
+                    new LoadImageTask(movieImageView).execute(movie.getImage());
+                    Log.d("MovieDetailActivity", "Movie details loaded successfully");
+                } else {
+                    Log.e("MovieDetailActivity", "Movie data is null or status is false");
+                }
 
             }
 

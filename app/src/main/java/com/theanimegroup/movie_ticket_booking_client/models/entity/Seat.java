@@ -5,6 +5,12 @@ public class Seat {
     private String seatNumber;
     private String cinemaName;
 
+    public Seat(int seatId, String seatNumber, String cinemaName) {
+        this.seatId = seatId;
+        this.seatNumber = seatNumber;
+        this.cinemaName = cinemaName;
+    }
+
     public int getSeatId() {
         return seatId;
     }
@@ -26,12 +32,6 @@ public class Seat {
     }
 
     public void setCinemaName(String cinemaName) {
-        this.cinemaName = cinemaName;
-    }
-
-    public Seat(int seatId, String seatNumber, String cinemaName) {
-        this.seatId = seatId;
-        this.seatNumber = seatNumber;
         this.cinemaName = cinemaName;
     }
 }
