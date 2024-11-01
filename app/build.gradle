@@ -38,6 +38,7 @@ dependencies {
     implementation libs.gson.converter
     implementation libs.okhttp.logging
     implementation libs.projectlombok.lombok
+    implementation libs.cardview
     annotationProcessor libs.lombok;
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit

@@ -2,6 +2,7 @@ package com.theanimegroup.movie_ticket_booking_client.api;
 
 import com.theanimegroup.movie_ticket_booking_client.models.request.AuthenticationRequest;
 import com.theanimegroup.movie_ticket_booking_client.models.request.RegisterRequest;
+import com.theanimegroup.movie_ticket_booking_client.models.response.AccountResponseBasic;
 import com.theanimegroup.movie_ticket_booking_client.models.response.AuthenticationResponse;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 
@@ -17,5 +18,5 @@ public interface AuthenticationService {
     @POST("/api/auth/register")
     Call<ResponseObject<Object>> register (@Body RegisterRequest registerRequest);
     @GET("/api/auth/who-am-i")
-    Call<ResponseObject<Object>> me(@Header("Authorization") String header);
+    Call<ResponseObject<AccountResponseBasic>> me(@Header("Authorization") String header);
 }
