@@ -61,7 +61,7 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
 
         moreBtn.setOnClickListener(v -> {
             Intent intent = new Intent(context, MovieDetailActivity.class);
-            intent.putExtra("movieId", String.valueOf(movie.getId()));
+            intent.putExtra("movieId", movie.getId());
             context.startActivity(intent);
         });
 

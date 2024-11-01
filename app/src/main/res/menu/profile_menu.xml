@@ -9,4 +9,7 @@
     <item
         android:id="@+id/logout"
         android:title="Logout" />
+    <item
+        android:id="@+id/transaction_history_menu"
+        android:title="Transaction History" />
 </menu>

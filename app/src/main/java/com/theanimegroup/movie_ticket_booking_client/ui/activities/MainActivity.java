@@ -18,6 +18,7 @@ import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 import com.theanimegroup.movie_ticket_booking_client.ui.adapters.MovieAdapter;
+import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             });
             popupMenu.show();
         });
+        TokenUtils.removeAuthToken(MainActivity.this);
     }
 
     private void loadMovies() {
