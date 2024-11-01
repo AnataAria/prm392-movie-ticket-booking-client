@@ -51,6 +51,10 @@
             android:name=".ui.activities.ShowTimeActivity"
             android:exported="false"
             tools:ignore="Instantiatable"/>
+        <activity
+            android:name=".ui.activities.SeatActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable"/>
 
     </application>
 
