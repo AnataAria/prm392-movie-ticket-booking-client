@@ -47,6 +47,10 @@
             android:name=".ui.activities.MovieDetailActivity"
             android:exported="false"
             tools:ignore="Instantiatable"/>
+        <activity
+            android:name=".ui.activities.ShowTimeActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable"/>
 
     </application>
 
