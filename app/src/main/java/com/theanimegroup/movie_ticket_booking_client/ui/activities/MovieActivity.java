@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
@@ -49,6 +50,12 @@ public class MovieActivity extends AppCompatActivity {
             Intent intent = new Intent(MovieActivity.this, MovieDetailActivity.class);
             intent.putExtra("movieId", selectedMovie.getId());
             startActivity(intent);
+        });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
         });
     }
 

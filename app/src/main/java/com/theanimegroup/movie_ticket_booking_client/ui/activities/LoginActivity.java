@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,6 +19,7 @@ import com.theanimegroup.movie_ticket_booking_client.api.AuthenticationService;
 import com.theanimegroup.movie_ticket_booking_client.models.request.AuthenticationRequest;
 import com.theanimegroup.movie_ticket_booking_client.models.response.AuthenticationResponse;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
+import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,6 +45,12 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
+        });
     }
 
     private void loginUser() {
@@ -66,11 +74,9 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
                     assert response.body() != null;
                     String token = response.body().getData().getToken();
-                    SharedPreferences sharedPreferences = getSharedPreferences("MovieAppPrefsToken", MODE_PRIVATE);
-                    @SuppressLint("CommitPrefEdits") SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("auth_token", token);
-                    editor.apply();
+                    TokenUtils.saveAuthToken(LoginActivity.this, token);
                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     finish();
                 } else {

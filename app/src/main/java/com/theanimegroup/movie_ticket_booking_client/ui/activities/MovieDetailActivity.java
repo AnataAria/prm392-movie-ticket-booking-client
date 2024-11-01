@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
@@ -21,6 +22,7 @@ import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObj
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -43,7 +45,6 @@ public class MovieDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.active_movie_detail);
-
         // Initialize views
         titleTextView = findViewById(R.id.info_movie_title);
         directorTextView = findViewById(R.id.info_movie_director);
@@ -67,6 +68,13 @@ public class MovieDetailActivity extends AppCompatActivity {
                 startActivity(intent);
             } else {
                 Toast.makeText(MovieDetailActivity.this, "Movie ID is invalid", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
             }
         });
     }

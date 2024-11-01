@@ -6,6 +6,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
@@ -40,6 +41,12 @@ public class SeatActivity extends AppCompatActivity {
         loadAvailbleSeat();
         listView.setOnItemClickListener((parent, view, position, id) -> {
 
+        });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
         });
     }
 

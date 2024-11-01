@@ -12,29 +12,12 @@ import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.ShowTime;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class ShowTimeAdapter extends BaseAdapter {
-    private Context context;
-    private ArrayList<ShowTime> showTimes;
+public class ShowTimeAdapter extends BaseListAdapter<ShowTime> {
 
-    public ShowTimeAdapter(Context context, ArrayList<ShowTime> showTimes) {
-        this.context = context;
-        this.showTimes = showTimes;
-    }
-
-    @Override
-    public int getCount() {
-        return showTimes.size();
-    }
-
-    @Override
-    public Object getItem(int position) {
-        return showTimes.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return position;
+    public ShowTimeAdapter(Context context, List<ShowTime> showTimes) {
+        super(context, showTimes);
     }
 
     @Override
@@ -47,7 +30,7 @@ public class ShowTimeAdapter extends BaseAdapter {
         TextView showDateTime = convertView.findViewById(R.id.show_date_time);
         TextView room = convertView.findViewById(R.id.movie_room);
 
-        ShowTime showTime = showTimes.get(position);
+        ShowTime showTime = items.get(position);
         if (showTime != null) {
             id.setText(String.valueOf(showTime.getId()));
             showDateTime.setText(showTime.getShowDateTime());
