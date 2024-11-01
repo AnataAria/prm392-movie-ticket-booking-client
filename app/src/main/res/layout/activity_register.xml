@@ -37,6 +37,7 @@
             android:layout_marginRight="30dp"
             android:hint="Full Name"
             android:inputType="text"
+            android:textColor="@color/white"
             android:textColorHint="#78FFFFFF" />
 
         <!-- Email -->
@@ -48,6 +49,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="30dp"
             android:hint="Email"
+            android:textColor="@color/white"
             android:inputType="textEmailAddress"
             android:textColorHint="#78FFFFFF" />
         <!-- Mật khẩu -->
@@ -59,6 +61,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="30dp"
             android:hint="Password"
+            android:textColor="@color/white"
             android:inputType="textPassword"
             android:textColorHint="#78FFFFFF" />
 
@@ -71,6 +74,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginRight="30dp"
             android:hint="Confirm Password"
+            android:textColor="@color/white"
             android:inputType="textPassword"
             android:textColorHint="#78FFFFFF" />
         <!-- Nút Đăng Ký -->

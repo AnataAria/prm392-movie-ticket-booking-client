@@ -92,14 +92,25 @@
                 android:textSize="14sp" />
 
             <!-- More Button -->
-            <Button
+            <TextView
                 android:id="@+id/more_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:backgroundTint="#FF6200EE"
                 android:text="More"
-                android:textColor="#FFFFFF" />
+                android:fontFamily="monospace"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:clickable="true"
+                android:textAlignment="center"
+                android:textColor="@color/metallic_silver"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:background="@drawable/space_button_background"
+                />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
