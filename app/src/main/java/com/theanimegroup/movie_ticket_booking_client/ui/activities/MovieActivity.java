@@ -1,5 +1,8 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
@@ -8,7 +11,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
-import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
 import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
@@ -31,18 +33,22 @@ public class MovieActivity extends AppCompatActivity {
     private ListView listView;
     public MovieService movieService;
     private List<Movie> movieList = new ArrayList<>();
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_movie);
+        setContentView(R.layout.activity_list_entity);
 
         listView = findViewById(R.id.listView);
-        if (listView == null) {
-            Log.e("MovieActivity", "listView is null, check your layout ID");
-        }
+        movieService = RetrofitClient.getInstance().create(MovieService.class);
 
-        movieService = APIUnit.getInstance().getMovieService();
         loadMovies();
+        listView.setOnItemClickListener((parent, view, position, id) -> {
+            Movie selectedMovie = movieList.get(position);
+            Intent intent = new Intent(MovieActivity.this, MovieDetailActivity.class);
+            intent.putExtra("movieId", selectedMovie.getId()); // Pass movie ID or other data if needed
+            startActivity(intent);
+        });
     }
 
     private void loadMovies() {
@@ -68,6 +74,4 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

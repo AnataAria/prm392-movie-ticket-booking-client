@@ -1,0 +1,108 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Row 1: Movie Image -->
+    <ImageView
+        android:id="@+id/info_movie_image"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_launcher_background"
+        android:scaleType="centerCrop" />
+
+    <!-- Row 2: Movie Title -->
+    <TextView
+        android:id="@+id/info_movie_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_movie_image"
+        android:text="Movie Title"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="8dp" />
+
+    <!-- Row 3: Director, Status, Start Date, End Date -->
+    <LinearLayout
+        android:id="@+id/info_movie_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_movie_title"
+        android:orientation="vertical"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:id="@+id/info_movie_director"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Director: Director Name"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/info_movie_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Movie Description"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/info_movie_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status: Available"
+            android:textSize="14sp"
+            android:textColor="#008000" />
+
+        <TextView
+            android:id="@+id/info_movie_date_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Date: YYYY-MM-DD"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+
+        <TextView
+            android:id="@+id/info_movie_date_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Date: YYYY-MM-DD"
+            android:textSize="14sp"
+            android:textColor="#666666" />
+    </LinearLayout>
+
+    <!-- Row 4: Showtimes -->
+    <LinearLayout
+        android:id="@+id/info_movie_showtimes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_movie_details"
+        android:orientation="vertical"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/info_movie_showtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Showtimes: 12:00, 15:00, 18:00"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:visibility="gone" />
+        />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/info_movie_button"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/info_movie_showtimes"
+        android:layout_marginTop="19dp"
+        android:layout_centerHorizontal="true"
+        android:background="#ff0000"
+        android:text="Book Now"
+        android:textColor="#FFFFFF" />
+
+
+</RelativeLayout>

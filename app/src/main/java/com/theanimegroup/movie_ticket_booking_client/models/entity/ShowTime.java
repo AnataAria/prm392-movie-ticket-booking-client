@@ -5,13 +5,39 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+
 public class ShowTime {
-    public int Id;
-    public String CinemaRoomID;
-    public int MovieID;
-    public int AvaliableSeats;
+    public int id;
+    public String showDateTime;
+    public String roomName;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getShowDateTime() {
+        return showDateTime;
+    }
+
+    public void setShowDateTime(String showDateTime) {
+        this.showDateTime = showDateTime;
+    }
+
+    public String getRoomName() {
+        return roomName;
+    }
+
+    public void setRoomName(String roomName) {
+        this.roomName = roomName;
+    }
+
+    public ShowTime(int id, String showDateTime, String roomName) {
+        this.id = id;
+        this.showDateTime = showDateTime;
+        this.roomName = roomName;
+    }
 }

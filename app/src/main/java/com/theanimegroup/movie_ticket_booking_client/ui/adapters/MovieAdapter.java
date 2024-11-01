@@ -1,7 +1,10 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +15,11 @@ import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
+import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieDetailActivity;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MovieAdapter extends BaseAdapter {
     private Context context;
@@ -56,10 +61,13 @@ public class MovieAdapter extends BaseAdapter {
 
 
 
+
         Movie movie = movies.get(position);
         id.setText(String.valueOf(movie.getId()));
         name.setText(movie.getName());
         description.setText(movie.getDescription());
+        new MovieDetailActivity.LoadImageTask(image).execute(movie.getImage());
+
         image.setImageURI(Uri.parse(movie.getImage()));
         de.setText(movie.getDateStart().toString());
         ds.setText(movie.getDateEnd().toString());
@@ -68,5 +76,30 @@ public class MovieAdapter extends BaseAdapter {
         ls.setText(String.valueOf(movie.getShowtime().size()));
 
         return convertView;
+    }
+    private class LoadImageTask extends AsyncTask<String, Void, Bitmap> {
+        private ImageView imageView;
+
+        public LoadImageTask(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            String url = urls[0];
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            imageView.setImageBitmap(result);
+        }
     }
 }
