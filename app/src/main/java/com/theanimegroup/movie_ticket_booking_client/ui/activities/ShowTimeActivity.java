@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
@@ -47,6 +48,12 @@ public class ShowTimeActivity extends AppCompatActivity {
             int movieId = getIntent().getIntExtra("movieId", -1);
             intent.putExtra("movieId", movieId);
             startActivity(intent);
+        });
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
+            }
         });
     }
 

@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
@@ -18,9 +19,11 @@ import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
+import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,12 +41,11 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView descriptionTextView;
     private TextView showtimeTextView;
     private ImageView movieImageView;
-
+    private int currentMovieId = -1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.active_movie_detail);
-
         // Initialize views
         titleTextView = findViewById(R.id.info_movie_title);
         directorTextView = findViewById(R.id.info_movie_director);
@@ -55,27 +57,44 @@ public class MovieDetailActivity extends AppCompatActivity {
         movieImageView = findViewById(R.id.info_movie_image);
 
         btnBook = findViewById(R.id.info_movie_button);
-
+        currentMovieId = getIntent().getIntExtra("movieId", -1);
+        if (currentMovieId == -1) {
+            Toast.makeText(MovieDetailActivity.this, "Movie ID is invalid", Toast.LENGTH_SHORT).show();
+            finish();
+        }
         movieService = APIUnit.getInstance().getMovieService();
         loadMovieDetails();
-        btnBook.setOnClickListener(v -> {
-            int movieId = getIntent().getIntExtra("movieId", -1);
-            if (movieId != -1) {
-                // Create an intent to start ShowTimeActivity
-                Intent intent = new Intent(MovieDetailActivity.this, ShowTimeActivity.class);
-                intent.putExtra("movieId", movieId); // Pass the movie ID to the new activity
-                startActivity(intent);
-            } else {
-                Toast.makeText(MovieDetailActivity.this, "Movie ID is invalid", Toast.LENGTH_SHORT).show();
+        String token = TokenUtils.getAuthToken(MovieDetailActivity.this);
+        if (!token.isEmpty()) {
+            btnBook.setOnClickListener(v -> {
+
+                if (currentMovieId != -1) {
+                    // Create an intent to start ShowTimeActivity
+                    Intent intent = new Intent(MovieDetailActivity.this, ShowTimeActivity.class);
+                    intent.putExtra("movieId", currentMovieId); // Pass the movie ID to the new activity
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(MovieDetailActivity.this, "Movie ID is invalid", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
+        } else {
+            btnBook.setVisibility(TextView.GONE);
+        }
+
+
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finish();
             }
         });
     }
 
     private void loadMovieDetails() {
-        int movieId = getIntent().getIntExtra("movieId", -1);
-        Log.d("MovieDetailActivity", "Loading details for Movie ID: " + movieId);
+        Log.d("MovieDetailActivity", "Loading details for Movie ID: " + currentMovieId);
 
-        Call<ResponseObject<Movie>> call = movieService.getMovieDetails(1);
+        Call<ResponseObject<Movie>> call = movieService.getMovieDetails(currentMovieId);
         call.enqueue(new Callback<ResponseObject<Movie>>() {
             @Override
             public void onResponse(Call<ResponseObject<Movie>> call, Response<ResponseObject<Movie>> response) {
@@ -95,6 +114,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                     Log.d("MovieDetailActivity", "Movie details loaded successfully");
                 } else {
                     Log.e("MovieDetailActivity", "Movie data is null or status is false");
+                    finish();
                 }
 
             }
@@ -102,6 +122,7 @@ public class MovieDetailActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseObject<Movie>> call, Throwable t) {
                 Toast.makeText(MovieDetailActivity.this, "Load Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                finish();
             }
         });
     }

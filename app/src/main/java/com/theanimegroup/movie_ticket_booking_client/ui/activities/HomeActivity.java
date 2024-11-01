@@ -17,6 +17,7 @@ import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 import com.theanimegroup.movie_ticket_booking_client.ui.adapters.MovieAdapter;
+import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,13 +76,16 @@ public class HomeActivity extends AppCompatActivity {
                 if (id == R.id.view_profile) {
                     Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                     startActivity(intent);
-                    finish();
                     return true;
                 } else if (id == R.id.edit_profile) {
                     Toast.makeText(getApplicationContext(), "Action Two selected", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (id == R.id.logout) {
                     Toast.makeText(getApplicationContext(), "Action Three selected", Toast.LENGTH_SHORT).show();
+                    TokenUtils.removeAuthToken(HomeActivity.this);
+                    Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                     return true;
                 } else {
                     return false;

@@ -1,6 +1,7 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -8,11 +9,13 @@ import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
+import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieActivity;
 import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieDetailActivity;
 
 import java.io.InputStream;
@@ -41,6 +44,7 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
         TextView s = convertView.findViewById(R.id.movie_status);
         TextView dn = convertView.findViewById(R.id.movie_director_name);
         TextView ls = convertView.findViewById(R.id.movie_list);
+        Button moreBtn = convertView.findViewById(R.id.more_button);
 
         Movie movie = items.get(position);
         id.setText(String.valueOf(movie.getId()));
@@ -54,6 +58,12 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
         s.setText(movie.getStatus() == 1 ? "Valid" : "Not Valid");
         dn.setText(movie.getDirectorName());
         ls.setText(String.valueOf(movie.getShowtime().size()));
+
+        moreBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MovieDetailActivity.class);
+            intent.putExtra("movieId", movie.getId());
+            context.startActivity(intent);
+        });
 
         return convertView;
     }
