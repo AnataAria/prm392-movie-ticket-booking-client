@@ -1,5 +1,6 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageButton;
@@ -71,7 +72,9 @@ public class HomeActivity extends AppCompatActivity {
             popupMenu.setOnMenuItemClickListener(menuItem -> {
                 int id = menuItem.getItemId();
                 if (id == R.id.view_profile) {
-                    Toast.makeText(getApplicationContext(), "Action One selected", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                    startActivity(intent);
+                    finish();
                     return true;
                 } else if (id == R.id.edit_profile) {
                     Toast.makeText(getApplicationContext(), "Action Two selected", Toast.LENGTH_SHORT).show();

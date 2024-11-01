@@ -38,6 +38,11 @@
             tools:ignore="Instantiatable">
         </activity>
 
+        <activity android:name=".ui.activities.ProfileActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable">
+        </activity>
+
     </application>
 
 </manifest>
