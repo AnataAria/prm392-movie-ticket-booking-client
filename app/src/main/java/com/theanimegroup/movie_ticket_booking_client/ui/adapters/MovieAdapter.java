@@ -43,7 +43,7 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
         TextView s = convertView.findViewById(R.id.movie_status);
         TextView dn = convertView.findViewById(R.id.movie_director_name);
         TextView ls = convertView.findViewById(R.id.movie_list);
-        Button moreBtn = convertView.findViewById(R.id.more_button);
+        TextView moreBtn = convertView.findViewById(R.id.more_button);
 
         Movie movie = items.get(position);
         id.setText(String.valueOf(movie.getId()));

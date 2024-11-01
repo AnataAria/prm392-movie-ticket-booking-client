@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListView listView;
     private MovieAdapter movieAdapter;
     private MovieService movieService;
-    private List<Movie> movieList = new ArrayList<>();
+    private final List<Movie> movieList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

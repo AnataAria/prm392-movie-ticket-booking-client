@@ -10,7 +10,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 
 public interface TransactionHistoryService {
-
     @GET("/api/TransactionHistory/ListAll/account")
     Call<ResponseObject<List<TransactionHistoryResponse>>> getUserTransaction(@Header("Authorization") String token);
 }
