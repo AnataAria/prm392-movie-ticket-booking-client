@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor"
+    android:background="@drawable/space_background"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -78,15 +78,20 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <TextView
         android:id="@+id/editProfileButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/colorPrimary"
-        android:drawableStart="@drawable/ic_community"
-        android:drawablePadding="8dp"
-        android:text="Edit Profile"
-        android:textColor="@android:color/white" />
+        android:background="@drawable/space_button_background"
+        android:clickable="true"
+        android:fontFamily="monospace"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/metallic_silver"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:text="Edit Profile" />
 </LinearLayout>

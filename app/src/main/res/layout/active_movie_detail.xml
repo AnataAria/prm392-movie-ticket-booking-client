@@ -18,24 +18,28 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/info_movie_image"
         android:layout_marginTop="8dp"
+        android:layout_marginBottom="20dp"
         android:text="Movie Title"
         android:textColor="#000000"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <!-- Row 3: Director, Status, Start Date, End Date -->
+
+    <!-- Row 4: Showtimes -->
     <LinearLayout
         android:id="@+id/info_movie_details"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/info_movie_title"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="29dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/info_movie_director"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Director: Director Name"
             android:textColor="#666666"
             android:textSize="14sp" />
@@ -44,6 +48,7 @@
             android:id="@+id/info_movie_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Movie Description"
             android:textColor="#666666"
             android:textSize="14sp" />
@@ -52,6 +57,7 @@
             android:id="@+id/info_movie_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Status: Available"
             android:textColor="#008000"
             android:textSize="14sp" />
@@ -60,6 +66,7 @@
             android:id="@+id/info_movie_date_start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="Start Date: YYYY-MM-DD"
             android:textColor="#666666"
             android:textSize="14sp" />
@@ -68,12 +75,12 @@
             android:id="@+id/info_movie_date_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:text="End Date: YYYY-MM-DD"
             android:textColor="#666666"
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Row 4: Showtimes -->
     <LinearLayout
         android:id="@+id/info_movie_showtimes"
         android:layout_width="match_parent"
@@ -90,7 +97,7 @@
             android:textColor="#666666"
             android:textSize="14sp"
             android:visibility="gone" />
-        />
+
     </LinearLayout>
 
     <Button
