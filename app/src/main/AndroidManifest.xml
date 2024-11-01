@@ -27,7 +27,7 @@
         <activity
             android:name=".ui.activities.LoginActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"/>
+            tools:ignore="Instantiatable" />
 
         <!-- Register Activity -->
         <activity
@@ -37,24 +37,28 @@
         <activity
             android:name=".ui.activities.HomeActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"/>
+            tools:ignore="Instantiatable" />
 
         <activity
             android:name=".ui.activities.ProfileActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"/>
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.activities.MovieDetailActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"/>
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.activities.ShowTimeActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"/>
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".ui.activities.SeatActivity"
             android:exported="false"
-            tools:ignore="Instantiatable"/>
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".ui.activities.TransactionHistoryActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
 
     </application>
 

@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
-import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieActivity;
 import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieDetailActivity;
 
 import java.io.InputStream;
@@ -44,7 +43,7 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
         TextView s = convertView.findViewById(R.id.movie_status);
         TextView dn = convertView.findViewById(R.id.movie_director_name);
         TextView ls = convertView.findViewById(R.id.movie_list);
-        Button moreBtn = convertView.findViewById(R.id.more_button);
+        TextView moreBtn = convertView.findViewById(R.id.more_button);
 
         Movie movie = items.get(position);
         id.setText(String.valueOf(movie.getId()));

@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
     private ListView listView;
     private MovieAdapter movieAdapter;
     private MovieService movieService;
-    private List<Movie> movieList = new ArrayList<>();
+    private final List<Movie> movieList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +85,10 @@ public class HomeActivity extends AppCompatActivity {
                     TokenUtils.removeAuthToken(HomeActivity.this);
                     Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+                    return true;
+                } else if (id == R.id.transaction_history_menu) {
+                    Intent intent = new Intent(HomeActivity.this, TransactionHistoryActivity.class);
                     startActivity(intent);
                     return true;
                 } else {

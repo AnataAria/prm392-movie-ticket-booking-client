@@ -39,8 +39,8 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:hint="Email"
-            android:textColor="@color/white"
             android:inputType="textEmailAddress"
+            android:textColor="@color/white"
             android:textColorHint="#78FFFFFF" />
 
         <!-- Mật khẩu -->

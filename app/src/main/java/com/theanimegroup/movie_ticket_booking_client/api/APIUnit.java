@@ -15,6 +15,7 @@ public class APIUnit {
     private PingService pingService;
     private SeatService seatService;
     private ShowTimeService showTimeService;
+    private TransactionHistoryService transactionHistoryService;
 
     public static APIUnit getInstance() {
         if (instance == null) {
@@ -30,6 +31,7 @@ public class APIUnit {
         pingService = RetrofitClient.getInstance().create(PingService.class);
         seatService = RetrofitClient.getInstance().create(SeatService.class);
         showTimeService = RetrofitClient.getInstance().create(ShowTimeService.class);
+        transactionHistoryService = RetrofitClient.getInstance().create(TransactionHistoryService.class);
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -50,6 +52,10 @@ public class APIUnit {
 
     public ShowTimeService getShowTimeService() {
         return showTimeService;
+    }
+
+    public TransactionHistoryService getTransactionHistoryService() {
+        return transactionHistoryService;
     }
 
     public void reloadConnection() {
