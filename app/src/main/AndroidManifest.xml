@@ -59,6 +59,10 @@
             android:name=".ui.activities.TransactionHistoryActivity"
             android:exported="false"
             tools:ignore="Instantiatable" />
+        <activity
+            android:name=".ui.activities.EditProfileActivity"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
 
     </application>
 
