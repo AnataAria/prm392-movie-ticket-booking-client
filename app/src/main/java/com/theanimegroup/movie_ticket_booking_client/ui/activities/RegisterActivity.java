@@ -35,7 +35,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         registerField();
     }
-    private void registerField () {
+
+    private void registerField() {
         authenticationService = APIUnit.getInstance().getAuthenticationService();
         fullNameTxt = findViewById(R.id.fullname_input);
         emailTxt = findViewById(R.id.email_input);
@@ -51,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void handleRegisterCall () {
+    private void handleRegisterCall() {
         String fullName = fullNameTxt.getText().toString().trim();
         String email = emailTxt.getText().toString().trim();
         String password = passwordTxt.getText().toString().trim();
@@ -92,6 +93,7 @@ public class RegisterActivity extends AppCompatActivity {
                     finish();
                 }
             }
+
             @Override
             public void onFailure(Call<ResponseObject<Object>> call, Throwable t) {
                 Toast.makeText(RegisterActivity.this, "Register Failed, Please Check The Input Field", Toast.LENGTH_SHORT).show();

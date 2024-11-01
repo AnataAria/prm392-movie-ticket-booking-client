@@ -8,6 +8,7 @@ import java.util.List;
 
 public class BaseViewModel<T> extends ViewModel {
     protected MutableLiveData<List<T>> items = new MutableLiveData<>();
+
     public LiveData<List<T>> getItems() {
         return items;
     }

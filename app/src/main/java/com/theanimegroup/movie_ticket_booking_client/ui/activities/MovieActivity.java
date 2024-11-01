@@ -11,8 +11,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
+import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.MovieService;
-import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 import com.theanimegroup.movie_ticket_booking_client.ui.adapters.MovieAdapter;
@@ -29,10 +29,11 @@ import retrofit2.Response;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieActivity extends AppCompatActivity {
+    public MovieService movieService;
     private MovieAdapter adapter;
     private ListView listView;
-    public MovieService movieService;
     private List<Movie> movieList = new ArrayList<>();
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +41,13 @@ public class MovieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_entity);
 
         listView = findViewById(R.id.listView);
-        movieService = RetrofitClient.getInstance().create(MovieService.class);
+        movieService = APIUnit.getInstance().getMovieService();
 
         loadMovies();
         listView.setOnItemClickListener((parent, view, position, id) -> {
             Movie selectedMovie = movieList.get(position);
             Intent intent = new Intent(MovieActivity.this, MovieDetailActivity.class);
-            intent.putExtra("movieId", selectedMovie.getId()); // Pass movie ID or other data if needed
+            intent.putExtra("movieId", selectedMovie.getId());
             startActivity(intent);
         });
     }

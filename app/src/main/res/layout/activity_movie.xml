@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="#FFFFFF"
+    android:padding="16dp">
 
     <!-- Hidden Details Section -->
     <LinearLayout
@@ -14,39 +14,39 @@
 
         <TextView
             android:id="@+id/movie_id"
-            android:text="ID"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="ID" />
 
         <TextView
             android:id="@+id/movie_date_start"
-            android:text="Start Date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Start Date" />
 
         <TextView
             android:id="@+id/movie_date_end"
-            android:text="End Date"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="End Date" />
 
         <TextView
             android:id="@+id/movie_status"
-            android:text="Status"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Status" />
 
         <TextView
             android:id="@+id/movie_list"
-            android:text="List"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="List" />
 
         <TextView
             android:id="@+id/movie_director_name"
-            android:text="Director Name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="Director Name" />
     </LinearLayout>
 
     <!-- Main Movie Display -->
@@ -60,16 +60,16 @@
             android:id="@+id/movie_image"
             android:layout_width="80dp"
             android:layout_height="120dp"
-            android:src="@drawable/ic_launcher_background"
+            android:layout_marginEnd="16dp"
             android:scaleType="centerCrop"
-            android:layout_marginEnd="16dp" />
+            android:src="@drawable/ic_launcher_background" />
 
         <!-- Movie Details -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center_vertical">
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
 
             <!-- Movie Title -->
             <TextView
@@ -77,9 +77,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Movie Title"
+                android:textColor="#333333"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="#333333" />
+                android:textStyle="bold" />
 
             <!-- Movie Description -->
             <TextView
@@ -88,8 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="Movie description goes here..."
-                android:textSize="14sp"
-                android:textColor="#666666" />
+                android:textColor="#666666"
+                android:textSize="14sp" />
 
             <!-- More Button -->
             <Button
@@ -97,9 +97,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:backgroundTint="#FF6200EE"
                 android:text="More"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#FF6200EE" />
+                android:textColor="#FFFFFF" />
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

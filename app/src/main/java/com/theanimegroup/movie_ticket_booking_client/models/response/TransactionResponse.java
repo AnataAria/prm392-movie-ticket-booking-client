@@ -1,7 +1,5 @@
 package com.theanimegroup.movie_ticket_booking_client.models.response;
 
-import java.util.Date;
-
 public class TransactionResponse {
     public String movieName;
     public int ticketQuantity;

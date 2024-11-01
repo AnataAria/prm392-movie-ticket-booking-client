@@ -27,12 +27,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView  loginBtn, registerBtn;
+    private TextView loginBtn, registerBtn;
     private ImageButton menuBtn;
     private ListView listView;
     private MovieAdapter movieAdapter;
     private MovieService movieService;
     private List<Movie> movieList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         loadMovies();
     }
 
-    private void initComponent () {
+    private void initComponent() {
         this.loginBtn = findViewById(R.id.sign_in_button);
         this.registerBtn = findViewById(R.id.register_button);
         this.menuBtn = findViewById(R.id.menu_button);
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
             popupMenu.show();
         });
     }
+
     private void loadMovies() {
         Call<ResponseObject<List<Movie>>> call = movieService.getAllMovies();
         call.enqueue(new Callback<ResponseObject<List<Movie>>>() {

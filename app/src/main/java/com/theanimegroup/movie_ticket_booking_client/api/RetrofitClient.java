@@ -7,8 +7,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
-    private static Retrofit retrofit;
     private static final String BASE_URL = "https://mtb-api.arisavinh.dev";
+    private static Retrofit retrofit;
 
     public static Retrofit getInstance() {
         OkHttpClient client = new OkHttpClient.Builder()

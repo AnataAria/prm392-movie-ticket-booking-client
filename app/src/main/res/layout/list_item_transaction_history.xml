@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="8dp"
@@ -11,95 +10,95 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFF"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:background="#FFFFFF">
+        android:padding="16dp">
 
         <!-- Movie Name -->
         <TextView
             android:id="@+id/movieNameTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Movie Name"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="#333333"
             android:ellipsize="end"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:text="Movie Name"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/timeTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Show Time"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            android:textColor="#333333"
             android:ellipsize="end"
-            android:maxLines="1" />
+            android:maxLines="1"
+            android:text="Show Time"
+            android:textColor="#333333"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <!-- Ticket Quantity and Total Price in one row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
 
             <!-- Ticket Quantity -->
             <TextView
                 android:id="@+id/ticketQuantityTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Tickets: 0"
-                android:textSize="12sp"
-                android:textColor="#555555"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:text="Tickets: 0"
+                android:textColor="#555555"
+                android:textSize="12sp" />
 
             <!-- Total Price -->
             <TextView
                 android:id="@+id/totalPriceTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Total: $0.00"
-                android:textSize="12sp"
-                android:textColor="#555555"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:text="Total: $0.00"
+                android:textColor="#555555"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <!-- Status and Transaction Type in another row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal">
 
             <!-- Status -->
             <TextView
                 android:id="@+id/statusTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Status: Pending"
-                android:textSize="12sp"
-                android:textColor="#FF5722"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:text="Status: Pending"
+                android:textColor="#FF5722"
+                android:textSize="12sp" />
 
             <!-- Transaction Type -->
             <TextView
                 android:id="@+id/transactionTypeTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Type: Purchase"
-                android:textSize="12sp"
-                android:textColor="#555555"
                 android:layout_weight="1"
                 android:ellipsize="end"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:text="Type: Purchase"
+                android:textColor="#555555"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

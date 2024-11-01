@@ -21,6 +21,7 @@ import retrofit2.Response;
 public class ProfileActivity extends AppCompatActivity {
     private TextView emailTxt, addressTxt, phoneTxt, roleTxt, statusTxt, balanceTxt;
     private AuthenticationService authenticationService;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +29,8 @@ public class ProfileActivity extends AppCompatActivity {
         initComponent();
         loadProfile();
     }
-    private void initComponent () {
+
+    private void initComponent() {
         this.emailTxt = findViewById(R.id.emailTextView);
         this.addressTxt = findViewById(R.id.addressTextView);
         this.phoneTxt = findViewById(R.id.phoneTextView);
@@ -38,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         authenticationService = APIUnit.getInstance().getAuthenticationService();
     }
 
-    public void loadProfile () {
+    public void loadProfile() {
         SharedPreferences sharedPreferences = getSharedPreferences("MovieAppPrefsToken", MODE_PRIVATE);
         String token = sharedPreferences.getString("auth_token", null);
         String accessToken = String.format("Bearer %s", token);
@@ -52,9 +54,9 @@ public class ProfileActivity extends AppCompatActivity {
                         addressTxt.setText(String.format("Address: %s", acc.getAddress()));
                         phoneTxt.setText(String.format("Phone: %s", acc.getPhone()));
                         roleTxt.setText(String.format("Role: %s", "User"));
-                        statusTxt.setText(String.format("Status: %s", acc.getStatus() != 1 ? "ACTIVE": "DISABLE"));
+                        statusTxt.setText(String.format("Status: %s", acc.getStatus() != 1 ? "ACTIVE" : "DISABLE"));
                         balanceTxt.setText(String.format("Balance: %s", acc.getWallet()));
-                    }else {
+                    } else {
                         SharedPreferences.Editor editor = sharedPreferences.edit();
                         editor.remove("auth_token");
                         editor.apply();
@@ -66,7 +68,7 @@ public class ProfileActivity extends AppCompatActivity {
                     Toast.makeText(ProfileActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
+        } else {
             Toast.makeText(this, "User is not authenticated", Toast.LENGTH_SHORT).show();
         }
     }

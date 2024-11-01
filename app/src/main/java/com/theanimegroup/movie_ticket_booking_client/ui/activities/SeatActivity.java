@@ -1,7 +1,6 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
@@ -10,14 +9,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
-import com.theanimegroup.movie_ticket_booking_client.api.RetrofitClient;
+import com.theanimegroup.movie_ticket_booking_client.api.APIUnit;
 import com.theanimegroup.movie_ticket_booking_client.api.SeatService;
-import com.theanimegroup.movie_ticket_booking_client.api.ShowTimeService;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Seat;
-import com.theanimegroup.movie_ticket_booking_client.models.entity.ShowTime;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 import com.theanimegroup.movie_ticket_booking_client.ui.adapters.SeatAdapter;
-import com.theanimegroup.movie_ticket_booking_client.ui.adapters.ShowTimeAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +23,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SeatActivity extends AppCompatActivity {
+    public SeatService seatService;
     private SeatAdapter adapter;
     private ListView listView;
-    public SeatService seatService;
     private List<Seat> seatList = new ArrayList<>();
 
     @SuppressLint("MissingInflatedId")
@@ -39,7 +35,7 @@ public class SeatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_entity);
 
         listView = findViewById(R.id.listView);
-        seatService = RetrofitClient.getInstance().create(SeatService.class);
+        seatService = APIUnit.getInstance().getSeatService();
 
         loadAvailbleSeat();
         listView.setOnItemClickListener((parent, view, position, id) -> {
