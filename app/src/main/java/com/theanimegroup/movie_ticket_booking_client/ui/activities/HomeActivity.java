@@ -87,6 +87,10 @@ public class HomeActivity extends AppCompatActivity {
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                     return true;
+                } else if (id == R.id.transaction_history_menu) {
+                    Intent intent = new Intent(HomeActivity.this, TransactionHistoryActivity.class);
+                    startActivity(intent);
+                    return true;
                 } else {
                     return false;
                 }

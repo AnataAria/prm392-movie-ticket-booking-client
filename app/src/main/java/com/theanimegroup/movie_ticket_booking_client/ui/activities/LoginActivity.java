@@ -1,8 +1,6 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;

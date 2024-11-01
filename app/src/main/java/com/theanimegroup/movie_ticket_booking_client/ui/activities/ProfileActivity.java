@@ -1,7 +1,6 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;

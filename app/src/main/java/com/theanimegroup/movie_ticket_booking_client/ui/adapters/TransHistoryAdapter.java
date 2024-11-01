@@ -8,12 +8,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
-import com.theanimegroup.movie_ticket_booking_client.models.response.TransactionResponse;
+import com.theanimegroup.movie_ticket_booking_client.models.response.TransactionHistoryResponse;
 
 import java.util.List;
 
-public class TransHistoryAdapter extends BaseListAdapter<TransactionResponse> {
-    public TransHistoryAdapter(Context context, List<TransactionResponse> transactions) {
+public class TransHistoryAdapter extends BaseListAdapter<TransactionHistoryResponse> {
+    public TransHistoryAdapter(Context context, List<TransactionHistoryResponse> transactions) {
         super(context, transactions);
     }
 
@@ -24,7 +24,7 @@ public class TransHistoryAdapter extends BaseListAdapter<TransactionResponse> {
                     , parent, false);
         }
 
-        TransactionResponse transaction = getItem(position);
+        TransactionHistoryResponse transaction = getItem(position);
 
         TextView movieNameTextView = convertView.findViewById(R.id.movieNameTextView);
         TextView ticketQuantityTextView = convertView.findViewById(R.id.ticketQuantityTextView);
@@ -34,12 +34,12 @@ public class TransHistoryAdapter extends BaseListAdapter<TransactionResponse> {
         TextView transactionTypeTextView = convertView.findViewById(R.id.transactionTypeTextView);
 
         assert transaction != null;
-        movieNameTextView.setText(transaction.movieName);
-        ticketQuantityTextView.setText(String.valueOf(transaction.ticketQuantity));
-        totalPriceTextView.setText(String.valueOf(transaction.totalPrice));
-        timeTextView.setText(transaction.time);
-        statusTextView.setText(transaction.status);
-        transactionTypeTextView.setText(transaction.transactionType);
+        movieNameTextView.setText(transaction.getMovieName());
+        ticketQuantityTextView.setText(String.valueOf(transaction.getTicketQuantity()));
+        totalPriceTextView.setText(String.valueOf(transaction.getTotalPrice()));
+        timeTextView.setText(transaction.getTime());
+        statusTextView.setText(transaction.getStatus());
+        transactionTypeTextView.setText(transaction.getTransactionType());
 
         return convertView;
     }

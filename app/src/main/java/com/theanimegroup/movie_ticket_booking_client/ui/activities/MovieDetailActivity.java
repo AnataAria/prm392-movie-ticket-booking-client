@@ -23,7 +23,6 @@ import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,6 +41,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private TextView showtimeTextView;
     private ImageView movieImageView;
     private int currentMovieId = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

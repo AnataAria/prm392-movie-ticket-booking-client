@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
-import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieActivity;
 import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieDetailActivity;
 
 import java.io.InputStream;

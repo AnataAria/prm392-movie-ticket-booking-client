@@ -5,13 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.ShowTime;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShowTimeAdapter extends BaseListAdapter<ShowTime> {

@@ -5,20 +5,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Seat;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SeatAdapter extends BaseListAdapter<Seat> {
 
     public SeatAdapter(Context context, List<Seat> seats) {
-        super(context,seats);
+        super(context, seats);
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
