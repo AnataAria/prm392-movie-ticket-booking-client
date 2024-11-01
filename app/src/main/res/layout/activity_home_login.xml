@@ -70,6 +70,7 @@
 
                 <!-- Movie List Section -->
                 <ListView
+                    android:id="@+id/movie_auth_list_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
