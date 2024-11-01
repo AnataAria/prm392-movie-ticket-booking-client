@@ -53,7 +53,7 @@ public class MovieActivity extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     movieList.clear();
                     movieList.addAll(response.body().getData());
-                    adapter = new MovieAdapter(MovieActivity.this, new ArrayList<>(movieList));
+                    adapter = new MovieAdapter(MovieActivity.this, movieList);
                     listView.setAdapter(adapter);
                     Log.i("MovieActivity", "Movies loaded successfully");
                 } else {
