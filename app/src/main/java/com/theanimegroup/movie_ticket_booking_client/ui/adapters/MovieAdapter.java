@@ -1,29 +1,51 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
+import com.theanimegroup.movie_ticket_booking_client.ui.activities.MovieDetailActivity;
 
-import java.util.List;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.ArrayList;
 
-public class MovieAdapter extends BaseListAdapter<Movie> {
-    public MovieAdapter(Context movieActivity, List<Movie> movieList) {
-        super(movieActivity, movieList);
+public class MovieAdapter extends BaseAdapter {
+    private Context context;
+    private ArrayList<Movie> movies;
+
+    public MovieAdapter(Context context, ArrayList<Movie> movies) {
+        this.context = context;
+        this.movies = movies;
     }
 
     @Override
+    public int getCount() {
+        return movies.size();
+    }
+    @Override
+    public Object getItem(int position) {
+        return movies.get(position);
+    }
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+    @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = inflater.inflate(R.layout.activity_movie, parent, false);
+            convertView = LayoutInflater.from(context).inflate(R.layout.activity_movie, parent, false);
         }
 
         TextView id = convertView.findViewById(R.id.movie_id);
@@ -37,10 +59,15 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
         TextView dn = convertView.findViewById(R.id.movie_director_name);
         TextView ls = convertView.findViewById(R.id.movie_list);
 
-        Movie movie = items.get(position);
+
+
+
+        Movie movie = movies.get(position);
         id.setText(String.valueOf(movie.getId()));
         name.setText(movie.getName());
         description.setText(movie.getDescription());
+        new MovieDetailActivity.LoadImageTask(image).execute(movie.getImage());
+
         image.setImageURI(Uri.parse(movie.getImage()));
         de.setText(movie.getDateStart().toString());
         ds.setText(movie.getDateEnd().toString());
@@ -49,5 +76,30 @@ public class MovieAdapter extends BaseListAdapter<Movie> {
         ls.setText(String.valueOf(movie.getShowtime().size()));
 
         return convertView;
+    }
+    private class LoadImageTask extends AsyncTask<String, Void, Bitmap> {
+        private ImageView imageView;
+
+        public LoadImageTask(ImageView imageView) {
+            this.imageView = imageView;
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... urls) {
+            String url = urls[0];
+            Bitmap bitmap = null;
+            try {
+                InputStream in = new URL(url).openStream();
+                bitmap = BitmapFactory.decodeStream(in);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return bitmap;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap result) {
+            imageView.setImageBitmap(result);
+        }
     }
 }

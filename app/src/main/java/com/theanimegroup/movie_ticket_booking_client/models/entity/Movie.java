@@ -1,5 +1,6 @@
 package com.theanimegroup.movie_ticket_booking_client.models.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-public class Movie {
+public class Movie implements Serializable {
     public int id;
     public String name;
     public Date dateStart;
