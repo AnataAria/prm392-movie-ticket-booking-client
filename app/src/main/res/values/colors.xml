@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="metallic_silver">#EAEFEEEE</color>
+    <color name="backgroundColor">#F5F5F5</color> <!-- Light gray background -->
+    <color name="colorPrimary">#6200EE</color> <!-- Primary color for branding -->
+    <color name="textColorSecondary">#666666</color> <!-- Secondary text color -->
+    <color name="statusColor">#FF5722</color> <!-- Status text color -->
 </resources>

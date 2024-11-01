@@ -6,14 +6,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <!-- Toolbar -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="118dp"
-            android:background="?attr/colorPrimary"
+            android:layout_height="80dp"
+            android:background="@drawable/galaxy_gradient"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <!-- Hamburger Menu Button -->
@@ -39,7 +40,7 @@
                     android:id="@+id/profile_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="@drawable/circle_image_button"
                     android:src="@drawable/ic_profile"
                     />
             </LinearLayout>
@@ -62,12 +63,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="16dp"
+                    android:fontFamily="sans-serif-black"
                     android:text="Month’s movie"
-                    android:textSize="18sp"
+                    android:textSize="30sp"
                     android:textStyle="bold" />
 
                 <!-- Movie List Section -->
                 <ListView
+                    android:id="@+id/movie_auth_list_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">

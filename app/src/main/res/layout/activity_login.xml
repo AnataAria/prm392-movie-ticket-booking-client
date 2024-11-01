@@ -1,58 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/space_background"
+    android:layout_gravity="center">
+
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="282dp">
 
         <!-- Tiêu đề -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:paddingBottom="100dp"
-            android:textSize="24sp"
-            android:textStyle="bold"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="24dp" />
+            android:layout_marginBottom="24dp"
+            android:fontFamily="monospace"
+            android:paddingBottom="60dp"
+            android:shadowColor="#E4E4E4"
+            android:shadowDx="3"
+            android:shadowDy="5"
+            android:shadowRadius="5"
+            android:text="Login"
+            android:textColor="@color/metallic_silver"
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
         <!-- Email -->
         <EditText
             android:id="@+id/email_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             android:hint="Email"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:textColorHint="#78FFFFFF" />
 
         <!-- Mật khẩu -->
         <EditText
             android:id="@+id/password_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="30dp"
             android:hint="Password"
             android:inputType="textPassword"
-            android:layout_marginTop="16dp" />
+            android:textColorHint="#78FFFFFF" />
 
         <!-- Nút Đăng Nhập -->
-        <Button
+        <TextView
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_marginTop="24dp" />
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="100dp"
+            android:background="@drawable/space_button_background"
+            android:clickable="true"
+            android:fontFamily="monospace"
+            android:padding="10dp"
+            android:text="Confirm"
+            android:textAlignment="center"
+            android:textColor="@color/metallic_silver"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <!-- Liên kết Đăng ký -->
         <TextView
             android:id="@+id/register_link"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Don't have an account? Register here"
-            android:textColor="@android:color/holo_blue_light"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal" />
+            android:text="Don't have an account? Register here"
+            android:textColor="@android:color/holo_blue_light" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

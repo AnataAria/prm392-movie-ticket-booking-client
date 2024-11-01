@@ -6,20 +6,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.theanimegroup.movie_ticket_booking_client.R;
 import com.theanimegroup.movie_ticket_booking_client.models.response.TransactionResponse;
 
 import java.util.List;
 
-public class TransHistoryAdapter extends ArrayAdapter<TransactionResponse> {
+public class TransHistoryAdapter extends BaseListAdapter<TransactionResponse> {
     public TransHistoryAdapter(Context context, List<TransactionResponse> transactions) {
-        super(context, 0, transactions);
+        super(context, transactions);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_transaction_history
+            convertView = inflater.inflate(R.layout.list_item_transaction_history
                     , parent, false);
         }
 
@@ -32,6 +34,7 @@ public class TransHistoryAdapter extends ArrayAdapter<TransactionResponse> {
         TextView statusTextView = convertView.findViewById(R.id.statusTextView);
         TextView transactionTypeTextView = convertView.findViewById(R.id.transactionTypeTextView);
 
+        assert transaction != null;
         movieNameTextView.setText(transaction.movieName);
         ticketQuantityTextView.setText(String.valueOf(transaction.ticketQuantity));
         totalPriceTextView.setText(String.valueOf(transaction.totalPrice));
