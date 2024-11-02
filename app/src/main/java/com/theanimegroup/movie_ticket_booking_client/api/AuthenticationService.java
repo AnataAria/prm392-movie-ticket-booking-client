@@ -11,6 +11,10 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
+import retrofit2.http.QueryName;
 
 public interface AuthenticationService {
     @POST("/api/auth/login")
@@ -21,4 +25,6 @@ public interface AuthenticationService {
 
     @GET("/api/auth/who-am-i")
     Call<ResponseObject<AccountResponseBasic>> me(@Header("Authorization") String header);
+    @PUT("/api/Account/UpdateWallet")
+    Call<ResponseObject<Object>> updateWallet(@Header("Authorization") String header, @Query("wallet") Double wallet);
 }
