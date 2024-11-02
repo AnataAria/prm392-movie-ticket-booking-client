@@ -32,60 +32,60 @@ public class TicketActivity extends AppCompatActivity {
     private List<TicketDto> ticketDtoList = new ArrayList<>();
     private TextView title;
 
-    @SuppressLint("MissingInflatedId")
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_entity);
-
-        listView = findViewById(R.id.listView);
-        ticketService = APIUnit.getInstance().getTicketService();
-
-        loadAvailableSeats();
-
-        listView.setOnItemClickListener((parent, view, position, id) -> {
-            TicketDto selectedTicketDto = ticketDtoList.get(position);
-            Intent intent = new Intent(TicketActivity.this, TicketDetailsActivity.class);
-            String room = getIntent().getStringExtra("room");
-            intent.putExtra("room", room);
-            intent.putExtra("ticketId", selectedTicketDto.getId());
-            intent.putExtra("seatId", selectedTicketDto.getSeatName());
-            startActivity(intent);
-        });
-
-        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                finish();
-            }
-        });
-    }
-
-    private void loadAvailableSeats() {
-        int movieId = getIntent().getIntExtra("movieId", -1);
-        int showTimeId = getIntent().getIntExtra("showTimeId", -1);
-
-        Call<ResponseObject<List<TicketDto>>> call = ticketService.getTicketByMovieId(movieId);
-        call.enqueue(new Callback<ResponseObject<List<TicketDto>>>() {
-            @Override
-            public void onResponse(Call<ResponseObject<List<TicketDto>>> call, Response<ResponseObject<List<TicketDto>>> response) {
-                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
-                    ticketDtoList.clear();
-                    ticketDtoList.addAll(response.body().getData());
-                    adapter = new TicketAdapter(TicketActivity.this, new ArrayList<>(ticketDtoList));
-                    listView.setAdapter(adapter);
-                    Log.i("SeatActivity", "Seats loaded successfully");
-                } else {
-                    Log.e("SeatActivity", "Response error: " + (response.body() != null ? response.body().getError() : "No body"));
-                    Toast.makeText(TicketActivity.this, "Error loading data", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ResponseObject<List<TicketDto>>> call, Throwable t) {
-                Log.e("SeatActivity", "API call failed", t);
-                Toast.makeText(TicketActivity.this, "Load Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-    }
+//    @SuppressLint("MissingInflatedId")
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_list_entity);
+//
+//        listView = findViewById(R.id.listView);
+//        ticketService = APIUnit.getInstance().getTicketService();
+//
+//        loadAvailableSeats();
+//
+//        listView.setOnItemClickListener((parent, view, position, id) -> {
+//            TicketDto selectedTicketDto = ticketDtoList.get(position);
+//            Intent intent = new Intent(TicketActivity.this, TicketDetailsActivity.class);
+//            String room = getIntent().getStringExtra("room");
+//            intent.putExtra("room", room);
+//            intent.putExtra("ticketId", selectedTicketDto.getId());
+//            intent.putExtra("seatId", selectedTicketDto.getSeatName());
+//            startActivity(intent);
+//        });
+//
+//        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                finish();
+//            }
+//        });
+//    }
+//
+//    private void loadAvailableSeats() {
+//        int movieId = getIntent().getIntExtra("movieId", -1);
+//        int showTimeId = getIntent().getIntExtra("showTimeId", -1);
+//
+//        Call<ResponseObject<List<Ticket>>> call = ticketService.getTicketByMovieId(movieId);
+//        call.enqueue(new Callback<ResponseObject<List<TicketDto>>>() {
+//            @Override
+//            public void onResponse(Call<ResponseObject<List<TicketDto>>> call, Response<ResponseObject<List<TicketDto>>> response) {
+//                if (response.isSuccessful() && response.body() != null && response.body().getData() != null) {
+//                    ticketDtoList.clear();
+//                    ticketDtoList.addAll(response.body().getData());
+//                    adapter = new TicketAdapter(TicketActivity.this, new ArrayList<>(ticketDtoList));
+//                    listView.setAdapter(adapter);
+//                    Log.i("SeatActivity", "Seats loaded successfully");
+//                } else {
+//                    Log.e("SeatActivity", "Response error: " + (response.body() != null ? response.body().getError() : "No body"));
+//                    Toast.makeText(TicketActivity.this, "Error loading data", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<ResponseObject<List<TicketDto>>> call, Throwable t) {
+//                Log.e("SeatActivity", "API call failed", t);
+//                Toast.makeText(TicketActivity.this, "Load Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 }

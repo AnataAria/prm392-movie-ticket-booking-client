@@ -41,6 +41,8 @@ public class SeatActivity extends AppCompatActivity {
         loadAvailbleSeat();
         listView.setOnItemClickListener((parent, view, position, id) -> {
 
+            int movieId = getIntent().getIntExtra("movieId", -1);
+
         });
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override

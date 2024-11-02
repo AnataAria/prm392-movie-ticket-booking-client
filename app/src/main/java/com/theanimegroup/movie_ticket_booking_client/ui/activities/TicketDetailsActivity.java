@@ -46,7 +46,7 @@ import retrofit2.Response;
 public class TicketDetailsActivity extends AppCompatActivity {
     private TicketService ticketService;
     private Button btnBook;
-    private List<TicketDto> ticketDtoList = new ArrayList<>();
+    private List<Ticket> ticketDtoList = new ArrayList<>();
 
     private TextView movieTextView;
     private TextView getShowtimeTextView;
@@ -90,13 +90,13 @@ public class TicketDetailsActivity extends AppCompatActivity {
     }
 
     private void loadTicketDetail() {
-        Call<ResponseObject<List<TicketDto>>> call = ticketService.getTicketByMovieId(movieId);
-        call.enqueue(new Callback<ResponseObject<List<TicketDto>>>() {
+        Call<ResponseObject<List<Ticket>>> call = ticketService.getTicketByMovieId(1);
+        call.enqueue(new Callback<ResponseObject<List<Ticket>>>() {
             @Override
-            public void onResponse(Call<ResponseObject<List<TicketDto>>> call, Response<ResponseObject<List<TicketDto>>> response) {
+            public void onResponse(Call<ResponseObject<List<Ticket>>> call, Response<ResponseObject<List<Ticket>>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     ticketDtoList.addAll(response.body().getData());
-                    TicketDto ticketDto = ticketDtoList.get(0);
+                    Ticket ticketDto = ticketDtoList.get(0);
 
                     movieTextView.setText(ticketDto.getMovieName());
                     movieTextView.setTextSize(24);
@@ -138,7 +138,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<ResponseObject<List<TicketDto>>> call, Throwable t) {
+            public void onFailure(Call<ResponseObject<List<Ticket>>> call, Throwable t) {
                 Toast.makeText(TicketDetailsActivity.this, "Load Failed: " + t.getMessage(), Toast.LENGTH_LONG).show();
                 finish();
             }

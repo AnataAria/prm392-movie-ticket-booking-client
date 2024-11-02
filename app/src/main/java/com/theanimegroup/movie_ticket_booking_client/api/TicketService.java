@@ -16,7 +16,7 @@ public interface TicketService {
     @POST("/api/SolvedTicket/PurchaseTickets")
     Call<ResponseObject> purcharseTicket(@Path("showtimeId") int showTimeId, @Path("seatId") int seatId);
     @GET("/api/Ticket/GetTicketsByMovieId/{movieId}")
-    Call<ResponseObject<List<TicketDto>>> getTicketByMovieId(@Path("movieId") int movieId);
+    Call<ResponseObject<List<Ticket>>> getTicketByMovieId(@Path("movieId") int movieId);
     @GET("/api/Ticket/{id}")
     Call<ResponseObject<Ticket>> getTicketById(@Path("id") int id);
 

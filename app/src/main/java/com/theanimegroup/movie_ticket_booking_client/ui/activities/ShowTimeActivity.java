@@ -45,6 +45,8 @@ public class ShowTimeActivity extends AppCompatActivity {
             Intent intent = new Intent(ShowTimeActivity.this, SeatActivity.class);
             //intent.putExtra("movieId", selectedMovie.getId()); // Pass movie ID or other data if needed
             intent.putExtra("showTimeId", selectedShowTime.getId());
+            intent.putExtra("room", selectedShowTime.getRoomName());
+
             int movieId = getIntent().getIntExtra("movieId", -1);
             intent.putExtra("movieId", movieId);
             startActivity(intent);
