@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.theanimegroup.movie_ticket_booking_client.models.entity.Ticket;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -17,6 +19,7 @@ public class APIUnit {
     private ShowTimeService showTimeService;
     private TransactionHistoryService transactionHistoryService;
     private CreateOrderService createOrderService;
+    private TicketService ticketService;
     public static APIUnit getInstance() {
         if (instance == null) {
             instance = new APIUnit();
@@ -33,6 +36,7 @@ public class APIUnit {
         showTimeService = RetrofitClient.getInstance().create(ShowTimeService.class);
         transactionHistoryService = RetrofitClient.getInstance().create(TransactionHistoryService.class);
         createOrderService = new CreateOrderService();
+        ticketService = RetrofitClient.getInstance().create(TicketService.class);
     }
 
     public AuthenticationService getAuthenticationService() {
@@ -57,6 +61,9 @@ public class APIUnit {
 
     public TransactionHistoryService getTransactionHistoryService() {
         return transactionHistoryService;
+    }
+    public TicketService getTicketService() {
+        return ticketService;
     }
 
     public CreateOrderService getCreateOrderService() {

@@ -94,7 +94,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
         call.enqueue(new Callback<ResponseObject<List<TicketDto>>>() {
             @Override
             public void onResponse(Call<ResponseObject<List<TicketDto>>> call, Response<ResponseObject<List<TicketDto>>> response) {
-                (if response.isSuccessful() && response.body() != null) {
+                if (response.isSuccessful() && response.body() != null) {
                     ticketDtoList.addAll(response.body().getData());
                     TicketDto ticketDto = ticketDtoList.get(0);
 
