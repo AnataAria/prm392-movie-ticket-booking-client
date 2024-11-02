@@ -63,6 +63,24 @@
             android:name=".ui.activities.EditProfileActivity"
             android:exported="false"
             tools:ignore="Instantiatable" />
+        <activity android:name=".ui.activities.PaymentNotificationAppToAppActivity"
+            android:exported="true"
+            tools:ignore="Instantiatable"
+            />
+        <activity
+            android:name=".ui.activities.WalletImportActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            tools:ignore="Instantiatable">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="mtb"
+                    android:host="movieticket" />
+            </intent-filter>
+        </activity>
 
     </application>
 

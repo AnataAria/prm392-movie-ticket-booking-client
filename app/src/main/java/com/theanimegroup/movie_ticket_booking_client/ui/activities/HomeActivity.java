@@ -91,7 +91,11 @@ public class HomeActivity extends AppCompatActivity {
                     Intent intent = new Intent(HomeActivity.this, TransactionHistoryActivity.class);
                     startActivity(intent);
                     return true;
-                } else {
+                } else if (id == R.id.wallet_recharge_menu) {
+                    Intent intent = new Intent(HomeActivity.this, WalletImportActivity.class);
+                    startActivity(intent);
+                    return true;
+                }else {
                     return false;
                 }
             });
