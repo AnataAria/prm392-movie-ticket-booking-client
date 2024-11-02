@@ -34,8 +34,10 @@ import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 import java.io.InputStream;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -55,8 +57,8 @@ public class TicketDetailsActivity extends AppCompatActivity {
     private TextView seatStatus;
     private TextView priceTextView;
     private Button btnConfirm;
-    private int currentTicketId = -1;
     private int movieId = -1;
+    private int seatId = -1;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -74,8 +76,8 @@ public class TicketDetailsActivity extends AppCompatActivity {
         btnConfirm = findViewById(R.id.confirm_button);
 
         ticketService = APIUnit.getInstance().getTicketService();
-        int movieId = getIntent().getIntExtra("movieId", -1);
-        currentTicketId = getIntent().getIntExtra("ticketId", -1);
+        movieId = getIntent().getIntExtra("movieId", -1);
+        seatId = getIntent().getIntExtra("seatId", -1);
 
         loadTicketDetail();
 
@@ -102,15 +104,22 @@ public class TicketDetailsActivity extends AppCompatActivity {
                     movieTextView.setTextSize(24);
                     movieTextView.setTypeface(movieTextView.getTypeface(), Typeface.BOLD);
 
-                    DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
-                    String startDateText = "Show Time: " + dateFormat.format(ticketDto.getShowDateTime());
+                    DateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault());
+                    DateFormat outputFormat = new SimpleDateFormat("MMM dd, yyyy", Locale.getDefault());
+                    String startDateText = "";
+                    Date date = null;
+                    try {
+                        date = inputFormat.parse(ticketDto.getShowDateTime());
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
+                    assert date != null;
+                    startDateText = "Show Time: " + outputFormat.format(date);
                     SpannableString startDateSpannable = new SpannableString(startDateText);
-                    startDateSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     getShowtimeTextView.setText(startDateSpannable);
                     getShowtimeTextView.setTextSize(16);
                     getShowtimeTextView.setTextColor(Color.parseColor("#757575"));
-
-
+                    startDateSpannable.setSpan(new StyleSpan(Typeface.BOLD), 0, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
                     String statusText = (ticketDto.getStatus() == 1) ? "Available" : "Unavailable";
                     seatStatus.setText("Status: " + statusText);
                     seatStatus.setTextSize(16);

@@ -67,6 +67,10 @@
             android:exported="true"
             tools:ignore="Instantiatable"
             />
+        <activity android:name=".ui.activities.TicketDetailsActivity"
+            android:exported="true"
+            tools:ignore="Instantiatable"
+            />
         <activity
             android:name=".ui.activities.WalletImportActivity"
             android:exported="true"
