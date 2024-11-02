@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
 }
 
+
+
 android {
     namespace 'com.theanimegroup.movie_ticket_booking_client'
     compileSdk 34
@@ -27,7 +29,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
-
 dependencies {
 
     implementation libs.appcompat
@@ -39,6 +40,7 @@ dependencies {
     implementation libs.okhttp.logging
     implementation libs.projectlombok.lombok
     implementation libs.cardview
+    implementation fileTree("libs"){include("*.aar","*.jar") exclude("")}
     annotationProcessor libs.lombok;
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
