@@ -43,12 +43,9 @@ public class ShowTimeActivity extends AppCompatActivity {
         listView.setOnItemClickListener((parent, view, position, id) -> {
             ShowTime selectedShowTime = showTimeList.get(position);
             Intent intent = new Intent(ShowTimeActivity.this, SeatActivity.class);
-            //intent.putExtra("movieId", selectedMovie.getId()); // Pass movie ID or other data if needed
-            intent.putExtra("showTimeId", selectedShowTime.getId());
             intent.putExtra("room", selectedShowTime.getRoomName());
-
-            int movieId = getIntent().getIntExtra("movieId", -1);
-            intent.putExtra("movieId", movieId);
+            intent.putExtra("movieId", getIntent().getIntExtra("movieId", -1));
+            intent.putExtra("showTimeId", selectedShowTime.getId());
             startActivity(intent);
         });
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {

@@ -28,7 +28,9 @@ import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Seat;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.Ticket;
 import com.theanimegroup.movie_ticket_booking_client.models.entity.TicketDto;
+import com.theanimegroup.movie_ticket_booking_client.models.request.TicketPurchaseRequest;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
+import com.theanimegroup.movie_ticket_booking_client.models.response.TicketResponse;
 import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
 import java.io.InputStream;
@@ -59,6 +61,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
     private Button btnConfirm;
     private int movieId = -1;
     private int seatId = -1;
+    private int showTimeId = -1;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -78,8 +81,11 @@ public class TicketDetailsActivity extends AppCompatActivity {
         ticketService = APIUnit.getInstance().getTicketService();
         movieId = getIntent().getIntExtra("movieId", -1);
         seatId = getIntent().getIntExtra("seatId", -1);
+        showTimeId = getIntent().getIntExtra("showTimeId", -1);
 
         loadTicketDetail();
+
+        btnConfirm.setOnClickListener(v -> purchaseTicket());
 
 
 
@@ -152,6 +158,48 @@ public class TicketDetailsActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void purchaseTicket() {
+        // Retrieve the access token
+        String token = TokenUtils.getAuthToken(TicketDetailsActivity.this);
+        if (token.isEmpty()) {
+            Intent intent = new Intent(TicketDetailsActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        String accessToken = String.format("Bearer %s", token);
+
+        // Check if the movieId, seatId, and showTimeId are valid
+        if (movieId != -1 && seatId != -1 && showTimeId != -1) {
+            List<Integer> seatList = new ArrayList<>();
+            seatList.add(seatId); // Add the seat ID to the list
+
+            // Create the purchase request
+            TicketPurchaseRequest request = new TicketPurchaseRequest(showTimeId, seatList);
+
+            // Call the purchase ticket API
+            Call<ResponseObject<TicketResponse>> call = ticketService.purchaseTicket(accessToken,request);
+            call.enqueue(new Callback<ResponseObject<TicketResponse>>() {
+                @Override
+                public void onResponse(Call<ResponseObject<TicketResponse>> call, Response<ResponseObject<TicketResponse>> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        Toast.makeText(TicketDetailsActivity.this, "Ticket purchased successfully!", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(TicketDetailsActivity.this, TransactionHistoryActivity.class);
+
+                        startActivity(intent);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ResponseObject<TicketResponse>> call, Throwable t) {
+                    Log.e("TicketPurchase", "Error: " + t.getMessage());
+                    Toast.makeText(TicketDetailsActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(TicketDetailsActivity.this, "Movie ID or Seat ID is invalid.", Toast.LENGTH_SHORT).show();
+        }
     }
 
 
