@@ -5,6 +5,9 @@ import lombok.Getter;
 @Getter
 public class TransactionHistoryResponse {
     String movieName;
+    String showDateTime;
+    String room;
+    String seatName;
     int ticketQuantity;
     double totalPrice;
     String time;
