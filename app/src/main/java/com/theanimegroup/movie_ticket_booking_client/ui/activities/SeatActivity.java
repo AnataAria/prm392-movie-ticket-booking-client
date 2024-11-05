@@ -1,9 +1,11 @@
 package com.theanimegroup.movie_ticket_booking_client.ui.activities;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
@@ -27,20 +29,28 @@ public class SeatActivity extends AppCompatActivity {
     public SeatService seatService;
     private SeatAdapter adapter;
     private ListView listView;
-    private List<Seat> seatList = new ArrayList<>();
+    private final List<Seat> seatList = new ArrayList<>();
+    private int movieId = -1;
+    private int showTimeId = -1;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_entity);
-
+        movieId = getIntent().getIntExtra("movieId", -1);
+        showTimeId = getIntent().getIntExtra("showTimeId", -1);
         listView = findViewById(R.id.listView);
         seatService = APIUnit.getInstance().getSeatService();
 
-        loadAvailbleSeat();
+        loadAvailableSeat();
         listView.setOnItemClickListener((parent, view, position, id) -> {
-
+            Seat select = seatList.get((int)id);
+            Intent intent = new Intent(SeatActivity.this, TicketDetailsActivity.class);
+            intent.putExtra("movieId", movieId);
+            intent.putExtra("showTimeId", showTimeId);
+            intent.putExtra("seatId", select.getSeatId());
+            startActivity(intent);
         });
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -50,10 +60,7 @@ public class SeatActivity extends AppCompatActivity {
         });
     }
 
-    private void loadAvailbleSeat() {
-        int movieId = getIntent().getIntExtra("movieId", -1);
-        int showTimeId = getIntent().getIntExtra("showTimeId", -1);
-
+    private void loadAvailableSeat() {
         Call<ResponseObject<List<Seat>>> call = seatService.getAvailbleSeat(showTimeId, movieId);
         call.enqueue(new Callback<ResponseObject<List<Seat>>>() {
             @Override
