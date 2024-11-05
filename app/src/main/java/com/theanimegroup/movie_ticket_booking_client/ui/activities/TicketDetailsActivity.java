@@ -185,8 +185,8 @@ public class TicketDetailsActivity extends AppCompatActivity {
                 public void onResponse(Call<ResponseObject<TicketResponse>> call, Response<ResponseObject<TicketResponse>> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         Toast.makeText(TicketDetailsActivity.this, "Ticket purchased successfully!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(TicketDetailsActivity.this, TransactionHistoryActivity.class);
-
+                        Intent intent = new Intent(TicketDetailsActivity.this, HomeActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                     }
                 }
