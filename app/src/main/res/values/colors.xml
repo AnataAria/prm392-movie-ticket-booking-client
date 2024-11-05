@@ -7,4 +7,5 @@
     <color name="colorPrimary">#6200EE</color> <!-- Primary color for branding -->
     <color name="textColorSecondary">#666666</color> <!-- Secondary text color -->
     <color name="statusColor">#FF5722</color> <!-- Status text color -->
+    <color name="colorAccent">#FF4081</color> <!-- Example Accent Color -->
 </resources>
