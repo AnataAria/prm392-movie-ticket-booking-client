@@ -10,10 +10,10 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface MovieService {
-    @GET("/api/Movie")
+    @GET("/api/2024-11-11/movies")
     Call<ResponseObject<List<Movie>>> getAllMovies();
 
-    @GET("api/Movie/{id}")
+    @GET("api/2024-11-11/movies/{id}")
     Call<ResponseObject<Movie>> getMovieDetails(@Path("id") int movieId);
 
 

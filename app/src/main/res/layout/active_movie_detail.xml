@@ -100,16 +100,22 @@
 
     </LinearLayout>
 
-    <Button
+    <TextView
         android:id="@+id/info_movie_button"
         android:layout_width="265dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/info_movie_showtimes"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="19dp"
-        android:background="#ff0000"
+        android:background="@drawable/space_button_background"
         android:text="Book Now"
-        android:textColor="#FFFFFF" />
+        android:clickable="true"
+        android:fontFamily="monospace"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/metallic_silver"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

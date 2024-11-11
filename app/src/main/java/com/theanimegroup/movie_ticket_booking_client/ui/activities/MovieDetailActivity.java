@@ -21,6 +21,8 @@ import com.theanimegroup.movie_ticket_booking_client.models.entity.Movie;
 import com.theanimegroup.movie_ticket_booking_client.models.response.ResponseObject;
 import com.theanimegroup.movie_ticket_booking_client.util.TokenUtils;
 
+import org.w3c.dom.Text;
+
 import java.io.InputStream;
 import java.net.URL;
 
@@ -30,7 +32,7 @@ import retrofit2.Response;
 
 public class MovieDetailActivity extends AppCompatActivity {
     private MovieService movieService;
-    private Button btnBook;
+    private TextView btnBook;
 
     private TextView titleTextView;
     private TextView directorTextView;
@@ -104,10 +106,10 @@ public class MovieDetailActivity extends AppCompatActivity {
                     ResponseObject<Movie> responseObject = response.body();
                     Movie movie = responseObject.getData();
                     titleTextView.setText(movie.getName());
-                    directorTextView.setText(movie.getDirectorName());
-                    statusTextView.setText(String.valueOf(movie.getStatus()));
-                    dateStartTextView.setText(movie.getDateStart().toString());
-                    dateEndTextView.setText(movie.getDateEnd().toString());
+                    directorTextView.setText("Director: "+movie.getDirectorName());
+                    statusTextView.setText("Status: "+String.valueOf(movie.getStatus()));
+                    dateStartTextView.setText("Start Date: " + movie.getDateStart().toString());
+                    dateEndTextView.setText("End Date: "+movie.getDateEnd().toString());
                     descriptionTextView.setText(movie.getDescription());
                     showtimeTextView.setText(movie.getShowtime().toString());
                     new LoadImageTask(movieImageView).execute(movie.getImage());

@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface ShowTimeService {
-    @GET("/api/ShowTime/GetShowtimesByMovieId/{movieId}")
+    @GET("/api/2024-11-11/showtimes/movieid/{movieId}")
     Call<ResponseObject<List<ShowTime>>> getShowTimeByMovieId(@Path("movieId") int movieId);
 }

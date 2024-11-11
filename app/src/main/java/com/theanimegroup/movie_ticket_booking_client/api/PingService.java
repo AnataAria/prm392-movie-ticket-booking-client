@@ -4,6 +4,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface PingService {
-    @GET("/api/Ping/CheckServer")
+    @GET("/api/2024-11-11/ping/server")
     Call<Object> ping();
 }
