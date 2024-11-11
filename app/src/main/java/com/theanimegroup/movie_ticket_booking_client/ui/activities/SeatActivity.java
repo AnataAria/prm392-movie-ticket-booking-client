@@ -73,7 +73,7 @@ public class SeatActivity extends AppCompatActivity {
                     Log.i("MovieActivity", "Movies loaded successfully");
                 } else {
                     Log.e("MovieActivity", "Response error: " + (response.body() != null ? response.body().getError() : "No body"));
-                    Toast.makeText(SeatActivity.this, "Error loading data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SeatActivity.this, "Ticket sold out!", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -17,14 +17,14 @@ import retrofit2.http.QueryMap;
 import retrofit2.http.QueryName;
 
 public interface AuthenticationService {
-    @POST("/api/2024-11-11/auth/login")
+    @POST("/user/api/2024-11-11/auth/login")
     Call<ResponseObject<AuthenticationResponse>> login(@Body AuthenticationRequest loginRequest);
 
-    @POST("/api/2024-11-11/auth/register")
+    @POST("/user/api/2024-11-11/auth/register")
     Call<ResponseObject<Object>> register(@Body RegisterRequest registerRequest);
 
-    @GET("/api/2024-11-11/auth/who-am-i")
+    @GET("/user/api/2024-11-11/auth/who-am-i")
     Call<ResponseObject<AccountResponseBasic>> me(@Header("Authorization") String header);
-    @PUT("/api/2024-11-11/account/wallet")
+    @PUT("/user/api/2024-11-11/account/wallet")
     Call<ResponseObject<Object>> updateWallet(@Header("Authorization") String header, @Query("wallet") Double wallet);
 }

@@ -71,7 +71,7 @@ public class ShowTimeActivity extends AppCompatActivity {
                     Log.i("MovieActivity", "Movies loaded successfully");
                 } else {
                     Log.e("MovieActivity", "Response error: " + (response.body() != null ? response.body().getError() : "No body"));
-                    Toast.makeText(ShowTimeActivity.this, "Error loading data", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ShowTimeActivity.this, "Ticket sold out", Toast.LENGTH_SHORT).show();
                 }
             }
 

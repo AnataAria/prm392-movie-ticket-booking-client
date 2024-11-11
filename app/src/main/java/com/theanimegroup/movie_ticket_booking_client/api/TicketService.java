@@ -17,13 +17,13 @@
     import retrofit2.http.Path;
 
     public interface TicketService {
-        @POST("/api/2024-11-11/solvedtickets/tickets")
+        @POST("/user/api/2024-11-11/solvedtickets/tickets")
         Call<ResponseObject<TicketResponse>> purchaseTicket(@Header("Authorization") String token,@Body TicketPurchaseRequest request);
 
-        @GET("/api/2024-11-11/tickets/movieid/{movieId}")
+        @GET("/user/api/2024-11-11/tickets/movieid/{movieId}")
         Call<ResponseObject<List<Ticket>>> getTicketByMovieId(@Path("movieId") int movieId);
 
-        @GET("/api/2024-11-11/tickets/{id}")
+        @GET("/user/api/2024-11-11/tickets/{id}")
         Call<ResponseObject<Ticket>> getTicketById(@Path("id") int id);
     }
 

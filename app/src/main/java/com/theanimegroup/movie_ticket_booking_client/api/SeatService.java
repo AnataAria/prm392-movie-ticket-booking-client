@@ -10,6 +10,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 
 public interface SeatService {
-    @GET("/api/2024-11-11/seats/showtimeid/{showtimeId}/movieid/{movieId}")
+    @GET("/user/api/2024-11-11/seats/showtimeid/{showtimeId}/movieid/{movieId}")
     Call<ResponseObject<List<Seat>>> getAvailbleSeat(@Path("showtimeId") int showTimeId, @Path("movieId") int movieId);
 }
