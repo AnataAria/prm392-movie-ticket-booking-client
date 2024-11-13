@@ -54,7 +54,8 @@ public class HomeActivity extends AppCompatActivity {
             popupMenu.setOnMenuItemClickListener(menuItem -> {
                 int id = menuItem.getItemId();
                 if (id == R.id.nav_home) {
-                    Toast.makeText(getApplicationContext(), "Action One selected", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(HomeActivity.this, HomeActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.nav_community) {
                     Toast.makeText(getApplicationContext(), "Action Two selected", Toast.LENGTH_SHORT).show();
@@ -78,7 +79,8 @@ public class HomeActivity extends AppCompatActivity {
                     startActivity(intent);
                     return true;
                 } else if (id == R.id.edit_profile) {
-                    Toast.makeText(getApplicationContext(), "Action Two selected", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(HomeActivity.this, EditProfileActivity.class);
+                    startActivity(intent);
                     return true;
                 } else if (id == R.id.logout) {
                     Toast.makeText(getApplicationContext(), "Action Three selected", Toast.LENGTH_SHORT).show();
